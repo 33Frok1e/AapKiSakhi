@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Floating Select - Tailwind</title>
+
+  <!-- Tailwind CDN for quick demo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --card: #ffffff;
+      --border: #e5e7eb; /* gray-200 */
+      --foreground: #111827; /* gray-900 */
+      --muted-foreground: #6b7280; /* gray-500 */
+      --primary: #2563eb; /* blue-600 */
+    }
+
+    /* small custom rules for floated label state (JS toggles .floated) */
+    .floating-label {
+      transition: all 0.3s ease;
+    }
+    .floating-label.floated {
+      top: -0.625rem; /* -2.5 in tailwind terms */
+      font-size: 0.75rem; /* text-xs */
+      background: var(--card);
+      padding: 0 0.25rem; /* px-1 */
+      color: var(--primary);
+      border-radius: 0.25rem;
+    }
+    /* Make sure label overlays nicely when floated */
+    .floating-label.floated::after {
+      content: "";
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
+
+  <div class="w-full max-w-md">
+    <form class="space-y-6">
+      <!-- Floating Select -->
+      <div class="relative">
+        <!--
+          - select has `peer` so label can respond to :focus via peer-focus
+          - first option is empty placeholder (disabled + hidden)
+          - JS will toggle the label's 'floated' class when select has value
+        -->
+        <select
+          id="country"
+          name="country"
+          class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg appearance-none
+                 text-[var(--foreground)]
+                 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent
+                 transition-all duration-300 cursor-pointer"
+          aria-label="Choose country"
+        >
+          <!-- placeholder option: keep value empty so we can detect empty state -->
+          <option value="" disabled selected hidden>Select country</option>
+
+          <!-- example options -->
+          <option value="in">India</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="ae">United Arab Emirates</option>
+        </select>
+
+        <!-- Chevron (SVG) -->
+        <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted-foreground)] pointer-events-none"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+
+        <!-- Label -->
+        <label for="country"
+               class="floating-label absolute left-4 pointer-events-none text-[var(--muted-foreground)]
+                      top-3.5 text-sm">
+          Country
+        </label>
+      </div>
+
+      <!-- Example: select with a preselected value (label starts floated) -->
+      <div class="relative">
+        <select
+          id="language"
+          name="language"
+          class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg appearance-none
+                 text-[var(--foreground)]
+                 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent
+                 transition-all duration-300 cursor-pointer"
+          aria-label="Choose language"
+        >
+          <option value="" disabled hidden>Select language</option>
+          <option value="en" selected>English</option>
+          <option value="hi">Hindi</option>
+          <option value="fr">French</option>
+        </select>
+
+        <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted-foreground)] pointer-events-none"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+
+        <label for="language"
+               class="floating-label absolute left-4 pointer-events-none text-[var(--muted-foreground)]
+                      top-3.5 text-sm">
+          Language
+        </label>
+      </div>
+
+      <button type="submit"
+              class="w-full py-3 rounded-lg bg-[var(--primary)] text-white font-medium hover:opacity-95 transition">
+        Save
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // Toggle label.floated when the select has a non-empty value.
+    function setupFloatingSelect(selectId) {
+      const sel = document.getElementById(selectId);
+      if (!sel) return;
+      const lbl = document.querySelector('label[for="' + selectId + '"]');
+      if (!lbl) return;
+
+      const update = () => {
+        if (sel.value && sel.value !== "") {
+          lbl.classList.add('floated');
+        } else {
+          lbl.classList.remove('floated');
+        }
+      };
+
+      // on load
+      update();
+
+      // update on change/focus/blur (to handle user actions and programmatic changes)
+      sel.addEventListener('change', update);
+      sel.addEventListener('input', update);
+      sel.addEventListener('focus', () => lbl.classList.add('floated'));
+      sel.addEventListener('blur', update);
+    }
+
+    // initialize selects (add ids used above)
+    setupFloatingSelect('country');
+    setupFloatingSelect('language');
+  </script>
+</body>
+</html>

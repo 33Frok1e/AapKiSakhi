@@ -1,0 +1,54 @@
+:root {
+    --primary: #01284C;        /* deep blue */
+    --gold: #D4AF37;           /* gold accent (if needed) */
+    --card: #ffffff;
+    --background: #f8fafc;     /* bg-background */
+    --border: #e6e9ee;
+    --foreground: #0f1724;
+    --muted: #6b7280;
+  }
+  
+  /* Gem float animation */
+  @keyframes floaty {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float { animation: floaty 4s ease-in-out infinite; }
+  
+  /* Floating label helper (uses :placeholder-shown on input) */
+  .floating-input input::placeholder { color: transparent; }
+  
+  /* small rounded background for floated label */
+  .label-bg {
+    border-radius: 0.25rem;
+  }
+  
+  /* left-side gradient (premium) */
+  .bg-gradient-elegant {
+    background: linear-gradient(180deg, rgba(1,40,76,0.95), rgba(2,53,101,0.95));
+    color: white;
+  }
+  
+  /* Eye icon animation */
+  .eye-icon {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .eye-icon:hover {
+    opacity: 0.7;
+  }
+  
+  /* Arrow animation */
+  .arrow-icon {
+    transition: transform 0.3s ease;
+  }
+  .btn-with-arrow:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+  
+  /* small responsive tweaks (keep design parity with original) */
+  @media (max-width: 1024px) {
+    .bg-gradient-elegant { display: none; }
+  }
+  

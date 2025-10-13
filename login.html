@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Jewelry Billing</title>
+
+  <!-- Tailwind CDN for quick demo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body class="min-h-screen bg-[var(--background)] flex items-stretch">
+
+  <!-- Left side: hero image (hidden on small screens) -->
+  <aside class="hidden lg:flex lg:w-1/2 bg-gradient-elegant relative overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-30"
+         style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070');"></div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center w-full p-12 text-center">
+      <svg class="w-24 h-24 mb-8 animate-float text-[var(--gold)]" viewBox="0 0 640 640" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M232.5 136L320 229L407.5 136L232.5 136zM447.9 163.1L375.6 240L504.6 240L448 163.1zM497.9 288L142.1 288L320 484.3L497.9 288zM135.5 240L264.5 240L192.2 163.1L135.6 240zM569.8 280.1L337.8 536.1C333.3 541.1 326.8 544 320 544C313.2 544 306.8 541.1 302.2 536.1L70.2 280.1C62.5 271.6 61.9 258.9 68.7 249.7L180.7 97.7C185.2 91.6 192.4 87.9 200 87.9L440 87.9C447.6 87.9 454.8 91.5 459.3 97.7L571.3 249.7C578.1 258.9 577.4 271.6 569.8 280.1z"/>
+      </svg>
+
+      <h1 class="text-5xl font-extrabold text-white mb-4 leading-tight">Jewelry Billing</h1>
+      <p class="text-xl text-white/80 max-w-md">
+        Elegant solutions for your precious business
+      </p>
+    </div>
+  </aside>
+
+  <!-- Right side: login form -->
+  <main class="flex-1 flex items-center justify-center p-8">
+    <div class="w-full max-w-md space-y-8">
+
+      <div class="text-center">
+        <div class="flex justify-center items-center">
+          <img class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain" 
+               src="./images/MainImage100.png" 
+               alt="Logo" />
+        </div>
+
+        <h2 class="text-3xl font-bold text-[var(--foreground)] mb-2">Welcome Back</h2>
+        <p class="text-sm text-[var(--muted)]">Sign in to your account</p>
+      </div>
+
+      <form id="loginForm" class="space-y-6 bg-[var(--card)] p-8 rounded-2xl shadow-sm" novalidate>
+        <!-- Email -->
+        <div class="relative">
+          <input id="email" name="email" type="email" required
+                 placeholder="Email Address" autocomplete="email"
+                 class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg
+                        text-[var(--foreground)] placeholder-transparent focus:outline-none
+                        focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-300" />
+          <label for="email"
+                 class="absolute left-4 transition-all duration-300 pointer-events-none text-[var(--muted)]
+                        peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm
+                        peer-focus:-top-2.5 peer-focus:text-xs peer-focus:bg-[var(--card)] peer-focus:px-1 peer-focus:text-[var(--primary)]
+                        -top-2.5 text-xs bg-[var(--card)] px-1 text-[var(--primary)] label-bg">
+            Email Address
+          </label>
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+          <input id="password" name="password" type="password" required
+                 placeholder="Password" autocomplete="current-password"
+                 class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg
+                        text-[var(--foreground)] placeholder-transparent focus:outline-none
+                        focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-300" />
+          <label for="password"
+                 class="absolute left-4 transition-all duration-300 pointer-events-none text-[var(--muted)]
+                        peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm
+                        peer-focus:-top-2.5 peer-focus:text-xs peer-focus:bg-[var(--card)] peer-focus:px-1 peer-focus:text-[var(--primary)]
+                        -top-2.5 text-xs bg-[var(--card)] px-1 text-[var(--primary)] label-bg">
+            Password
+          </label>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <a href="/forgot-password" class="text-sm hover:underline text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors">
+            Forgot password?
+          </a>
+        </div>
+
+        <button type="submit"
+                class="w-full py-4 rounded-lg bg-[var(--primary)] text-white font-semibold hover:opacity-95 transition">
+          Sign In
+        </button>
+
+        <p class="text-center text-sm text-[var(--muted)]">
+          Don't have an account?
+          <a href="/register" class="text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors font-medium ml-1 hover:underline">Register</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <!-- Custom JS -->
+  <script src="JS/login.js" defer></script>
+</body>
+</html>

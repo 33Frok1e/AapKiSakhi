@@ -1,0 +1,32 @@
+:root {
+    --primary: #01284C;        /* deep blue */
+    --gold: #D4AF37;           /* gold accent (optional) */
+    --card: #ffffff;
+    --background: #f8fafc;
+    --border: #e6e9ee;
+    --foreground: #0f1724;
+    --muted: #6b7280;
+  }
+  
+  /* Gem float animation */
+  @keyframes floaty {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float { animation: floaty 4s ease-in-out infinite; }
+  
+  /* Left-side gradient */
+  .bg-gradient-elegant {
+    background: linear-gradient(180deg, rgba(1,40,76,0.95), rgba(2,53,101,0.95));
+    color: white;
+  }
+  
+  /* small rounded background for floated label */
+  .label-bg { border-radius: 0.25rem; }
+  
+  /* small responsive tweaks (match original behaviour) */
+  @media (max-width: 1024px) {
+    .bg-gradient-elegant { display: none; }
+  }
+  
