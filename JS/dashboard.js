@@ -192,6 +192,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePagination();
     initializeCheckboxes();
     initializeDropdowns();
+    
+    // Debug: Test if elements exist
+    console.log('=== DEBUGGING DROPDOWNS ===');
+    console.log('User dropdown toggle:', document.getElementById('userDropdownToggle'));
+    console.log('User dropdown menu:', document.getElementById('userDropdown'));
+    console.log('Admin dropdown toggle:', document.getElementById('adminDropdownToggle'));
+    console.log('Admin submenu:', document.getElementById('adminSubmenu'));
 });
 
 // Sidebar functionality
@@ -261,6 +268,10 @@ function initializeTable() {
 
 function renderTable() {
     const tbody = document.getElementById('productTableBody');
+    if (!tbody) {
+        console.log('Table body not found, skipping table render');
+        return;
+    }
     const startIndex = currentPage * pageSize;
     const endIndex = startIndex + pageSize;
     const pageData = filteredData.slice(startIndex, endIndex);
@@ -328,6 +339,10 @@ function renderTable() {
 // Search functionality
 function initializeSearch() {
     const searchInput = document.getElementById('searchInput');
+    if (!searchInput) {
+        console.log('Search input not found, skipping search initialization');
+        return;
+    }
     
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
@@ -409,6 +424,10 @@ function initializePagination() {
 
 function renderPagination() {
     const pagination = document.getElementById('pagination');
+    if (!pagination) {
+        console.log('Pagination element not found, skipping pagination render');
+        return;
+    }
     const totalPages = Math.ceil(filteredData.length / pageSize);
     
     let paginationHTML = '';
@@ -474,11 +493,16 @@ function renderPagination() {
 }
 
 function updatePaginationInfo() {
+    const paginationInfo = document.getElementById('paginationInfo');
+    if (!paginationInfo) {
+        console.log('Pagination info element not found, skipping pagination info update');
+        return;
+    }
     const startIndex = currentPage * pageSize + 1;
     const endIndex = Math.min((currentPage + 1) * pageSize, filteredData.length);
     const total = filteredData.length;
     
-    document.getElementById('paginationInfo').textContent = 
+    paginationInfo.textContent = 
         `Showing ${startIndex} to ${endIndex} of ${total} entries`;
 }
 
@@ -486,6 +510,11 @@ function updatePaginationInfo() {
 function initializeCheckboxes() {
     const selectAllCheckbox = document.getElementById('selectAll');
     const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    
+    if (!selectAllCheckbox) {
+        console.log('Select all checkbox not found, skipping checkbox initialization');
+        return;
+    }
     
     selectAllCheckbox.addEventListener('change', function() {
         rowCheckboxes.forEach(checkbox => {
@@ -506,7 +535,10 @@ function initializeCheckboxes() {
 document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.key === 'k') {
         e.preventDefault();
-        document.getElementById('searchInput').focus();
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.focus();
+        }
     }
 });
 
@@ -535,259 +567,169 @@ function handleResponsive() {
     }
 }
 
-// Dropdown functionality
+// Dropdown functionality - SUPER SIMPLE APPROACH
 function initializeDropdowns() {
     console.log('Initializing dropdowns...');
     
-    // Admin dropdown
-    const adminDropdownToggle = document.getElementById('adminDropdownToggle');
-    const adminSubmenu = document.getElementById('adminSubmenu');
+    // Wait a bit for DOM to be fully ready
+    setTimeout(function() {
+        setupUserDropdown();
+        setupSidebarDropdowns();
+        setupOutsideClick();
+    }, 100);
+}
+
+function setupUserDropdown() {
+    const userToggle = document.getElementById('userDropdownToggle');
+    const userMenu = document.getElementById('userDropdown');
+    
+    console.log('Setting up user dropdown:', userToggle, userMenu);
+    
+    if (userToggle && userMenu) {
+        userToggle.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('User dropdown clicked!');
+            
+            // Close sidebar menus first
+            closeAllSidebarMenus();
+            
+            // Toggle user menu
+            if (userMenu.classList.contains('show')) {
+                userMenu.classList.remove('show');
+            } else {
+                userMenu.classList.add('show');
+            }
+        };
+    }
+}
+
+function setupSidebarDropdowns() {
+    // Admin
+    const adminToggle = document.getElementById('adminDropdownToggle');
+    const adminMenu = document.getElementById('adminSubmenu');
     const adminArrow = document.getElementById('adminArrow');
     
-    if (adminDropdownToggle && adminSubmenu && adminArrow) {
-        console.log('Admin dropdown found');
-        adminDropdownToggle.addEventListener('click', function(e) {
+    if (adminToggle && adminMenu && adminArrow) {
+        adminToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
-            const isCurrentlyOpen = !adminSubmenu.classList.contains('hidden');
-            
-            // Close all other dropdowns first
-            closeAllDropdowns();
-            
-            // Toggle current dropdown
-            if (isCurrentlyOpen) {
-                // If it was open, keep it closed
-                adminSubmenu.classList.add('hidden');
-                adminArrow.classList.remove('rotated');
-            } else {
-                // If it was closed, open it
-                adminSubmenu.classList.remove('hidden');
-                adminArrow.classList.add('rotated');
-            }
-        });
+            toggleSidebarMenu(adminMenu, adminArrow);
+        };
     }
-
-    // Accounts dropdown
-    const accountsDropdownToggle = document.getElementById('accountsDropdownToggle');
-    const accountsSubmenu = document.getElementById('accountsSubmenu');
+    
+    // Accounts
+    const accountsToggle = document.getElementById('accountsDropdownToggle');
+    const accountsMenu = document.getElementById('accountsSubmenu');
     const accountsArrow = document.getElementById('accountsArrow');
     
-    if (accountsDropdownToggle && accountsSubmenu && accountsArrow) {
-        console.log('Accounts dropdown found');
-        accountsDropdownToggle.addEventListener('click', function(e) {
+    if (accountsToggle && accountsMenu && accountsArrow) {
+        accountsToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
-            const isCurrentlyOpen = !accountsSubmenu.classList.contains('hidden');
-            
-            // Close all other dropdowns first
-            closeAllDropdowns();
-            
-            // Toggle current dropdown
-            if (isCurrentlyOpen) {
-                // If it was open, keep it closed
-                accountsSubmenu.classList.add('hidden');
-                accountsArrow.classList.remove('rotated');
-            } else {
-                // If it was closed, open it
-                accountsSubmenu.classList.remove('hidden');
-                accountsArrow.classList.add('rotated');
-            }
-        });
+            toggleSidebarMenu(accountsMenu, accountsArrow);
+        };
     }
-
-    // Exchange dropdown
-    const exchangeDropdownToggle = document.getElementById('exchangeDropdownToggle');
-    const exchangeSubmenu = document.getElementById('exchangeSubmenu');
+    
+    // Exchange
+    const exchangeToggle = document.getElementById('exchangeDropdownToggle');
+    const exchangeMenu = document.getElementById('exchangeSubmenu');
     const exchangeArrow = document.getElementById('exchangeArrow');
     
-    if (exchangeDropdownToggle && exchangeSubmenu && exchangeArrow) {
-        console.log('Exchange dropdown found');
-        exchangeDropdownToggle.addEventListener('click', function(e) {
+    if (exchangeToggle && exchangeMenu && exchangeArrow) {
+        exchangeToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
-            const isCurrentlyOpen = !exchangeSubmenu.classList.contains('hidden');
-            
-            // Close all other dropdowns first
-            closeAllDropdowns();
-            
-            // Toggle current dropdown
-            if (isCurrentlyOpen) {
-                // If it was open, keep it closed
-                exchangeSubmenu.classList.add('hidden');
-                exchangeArrow.classList.remove('rotated');
-            } else {
-                // If it was closed, open it
-                exchangeSubmenu.classList.remove('hidden');
-                exchangeArrow.classList.add('rotated');
-            }
-        });
+            toggleSidebarMenu(exchangeMenu, exchangeArrow);
+        };
     }
-
-    // Inventory dropdown
-    const inventoryDropdownToggle = document.getElementById('inventoryDropdownToggle');
-    const inventorySubmenu = document.getElementById('inventorySubmenu');
+    
+    // Inventory
+    const inventoryToggle = document.getElementById('inventoryDropdownToggle');
+    const inventoryMenu = document.getElementById('inventorySubmenu');
     const inventoryArrow = document.getElementById('inventoryArrow');
     
-    if (inventoryDropdownToggle && inventorySubmenu && inventoryArrow) {
-        console.log('Inventory dropdown found');
-        inventoryDropdownToggle.addEventListener('click', function(e) {
+    if (inventoryToggle && inventoryMenu && inventoryArrow) {
+        inventoryToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
-            const isCurrentlyOpen = !inventorySubmenu.classList.contains('hidden');
-            
-            // Close all other dropdowns first
-            closeAllDropdowns();
-            
-            // Toggle current dropdown
-            if (isCurrentlyOpen) {
-                // If it was open, keep it closed
-                inventorySubmenu.classList.add('hidden');
-                inventoryArrow.classList.remove('rotated');
-            } else {
-                // If it was closed, open it
-                inventorySubmenu.classList.remove('hidden');
-                inventoryArrow.classList.add('rotated');
-            }
-        });
+            toggleSidebarMenu(inventoryMenu, inventoryArrow);
+        };
     }
-
-    // Orders dropdown
-    const ordersDropdownToggle = document.getElementById('ordersDropdownToggle');
-    const ordersSubmenu = document.getElementById('ordersSubmenu');
+    
+    // Orders
+    const ordersToggle = document.getElementById('ordersDropdownToggle');
+    const ordersMenu = document.getElementById('ordersSubmenu');
     const ordersArrow = document.getElementById('ordersArrow');
     
-    if (ordersDropdownToggle && ordersSubmenu && ordersArrow) {
-        console.log('Orders dropdown found');
-        ordersDropdownToggle.addEventListener('click', function(e) {
+    if (ordersToggle && ordersMenu && ordersArrow) {
+        ordersToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
-            const isCurrentlyOpen = !ordersSubmenu.classList.contains('hidden');
-            
-            // Close all other dropdowns first
-            closeAllDropdowns();
-            
-            // Toggle current dropdown
-            if (isCurrentlyOpen) {
-                // If it was open, keep it closed
-                ordersSubmenu.classList.add('hidden');
-                ordersArrow.classList.remove('rotated');
-            } else {
-                // If it was closed, open it
-                ordersSubmenu.classList.remove('hidden');
-                ordersArrow.classList.add('rotated');
-            }
-        });
+            toggleSidebarMenu(ordersMenu, ordersArrow);
+        };
     }
-
-    // Reports dropdown
-    const reportsDropdownToggle = document.getElementById('reportsDropdownToggle');
-    const reportsSubmenu = document.getElementById('reportsSubmenu');
+    
+    // Reports
+    const reportsToggle = document.getElementById('reportsDropdownToggle');
+    const reportsMenu = document.getElementById('reportsSubmenu');
     const reportsArrow = document.getElementById('reportsArrow');
     
-    if (reportsDropdownToggle && reportsSubmenu && reportsArrow) {
-        console.log('Reports dropdown found');
-        reportsDropdownToggle.addEventListener('click', function(e) {
+    if (reportsToggle && reportsMenu && reportsArrow) {
+        reportsToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
-            const isCurrentlyOpen = !reportsSubmenu.classList.contains('hidden');
-            
-            // Close all other dropdowns first
-            closeAllDropdowns();
-            
-            // Toggle current dropdown
-            if (isCurrentlyOpen) {
-                // If it was open, keep it closed
-                reportsSubmenu.classList.add('hidden');
-                reportsArrow.classList.remove('rotated');
-            } else {
-                // If it was closed, open it
-                reportsSubmenu.classList.remove('hidden');
-                reportsArrow.classList.add('rotated');
-            }
-        });
+            toggleSidebarMenu(reportsMenu, reportsArrow);
+        };
     }
+}
 
-    // User dropdown - Simple and direct approach
-    function initUserDropdown() {
-        const userDropdownToggle = document.getElementById('userDropdownToggle');
-        const userDropdown = document.getElementById('userDropdown');
-        
-        console.log('Initializing user dropdown...');
-        console.log('Toggle element:', userDropdownToggle);
-        console.log('Menu element:', userDropdown);
-        
-        if (userDropdownToggle && userDropdown) {
-            console.log('User dropdown elements found!');
-            
-            userDropdownToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('User dropdown clicked!');
-                
-                // Close all other dropdowns first
-                document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
-                    if (dropdown !== userDropdown) {
-                        dropdown.classList.remove('show');
-                    }
-                });
-                
-                // Toggle current dropdown
-                userDropdown.classList.toggle('show');
-                console.log('Dropdown show class:', userDropdown.classList.contains('show'));
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!userDropdownToggle.contains(e.target) && !userDropdown.contains(e.target)) {
-                    userDropdown.classList.remove('show');
-                }
-            });
-            
-        } else {
-            console.error('User dropdown elements not found!');
-        }
-    }
+function toggleSidebarMenu(menu, arrow) {
+    // Close all other sidebar menus first
+    closeAllSidebarMenus();
     
-    // Initialize user dropdown
-    initUserDropdown();
-
-    // Export dropdown
-    const exportDropdownToggle = document.getElementById('exportDropdownToggle');
-    const exportDropdown = document.getElementById('exportDropdown');
-    
-    console.log('Export dropdown toggle:', exportDropdownToggle);
-    console.log('Export dropdown menu:', exportDropdown);
-    
-    if (exportDropdownToggle && exportDropdown) {
-        console.log('Export dropdown found, adding event listener');
-        exportDropdownToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Export dropdown clicked');
-            exportDropdown.classList.toggle('show');
-            console.log('Export dropdown show class:', exportDropdown.classList.contains('show'));
-        });
+    // Toggle current menu
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        arrow.classList.add('rotated');
     } else {
-        console.error('Export dropdown elements not found!');
+        menu.classList.add('hidden');
+        arrow.classList.remove('rotated');
     }
+}
 
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
-                dropdown.classList.remove('show');
-            });
+function setupOutsideClick() {
+    document.onclick = function(e) {
+        // Close user dropdown if clicking outside
+        const userMenu = document.getElementById('userDropdown');
+        const userToggle = document.getElementById('userDropdownToggle');
+        if (userMenu && userToggle && !userToggle.contains(e.target) && !userMenu.contains(e.target)) {
+            userMenu.classList.remove('show');
         }
         
-        // Close sidebar dropdowns when clicking outside
+        // Close sidebar menus if clicking outside nav
         if (!e.target.closest('nav')) {
-            closeAllDropdowns();
+            closeAllSidebarMenus();
+        }
+    };
+}
+
+function closeAllSidebarMenus() {
+    const menus = [
+        { menu: 'adminSubmenu', arrow: 'adminArrow' },
+        { menu: 'accountsSubmenu', arrow: 'accountsArrow' },
+        { menu: 'exchangeSubmenu', arrow: 'exchangeArrow' },
+        { menu: 'inventorySubmenu', arrow: 'inventoryArrow' },
+        { menu: 'ordersSubmenu', arrow: 'ordersArrow' },
+        { menu: 'reportsSubmenu', arrow: 'reportsArrow' }
+    ];
+    
+    menus.forEach(function(item) {
+        const menu = document.getElementById(item.menu);
+        const arrow = document.getElementById(item.arrow);
+        if (menu && arrow) {
+            menu.classList.add('hidden');
+            arrow.classList.remove('rotated');
         }
     });
 }
@@ -978,7 +920,7 @@ handleResponsive();
         }
     };
 
-    // Simple toggle function for inline onclick
+    // Simple toggle function for inline onclick (backup)
     window.toggleUserDropdown = function() {
         var userDropdown = document.getElementById('userDropdown');
         if (userDropdown) {
@@ -987,6 +929,47 @@ handleResponsive();
         } else {
             console.error('User dropdown not found!');
         }
+    };
+
+    // Debug function to test all dropdowns
+    window.testAllDropdowns = function() {
+        console.log('=== TESTING ALL DROPDOWNS ===');
+        
+        // Test user dropdown
+        const userToggle = document.getElementById('userDropdownToggle');
+        const userMenu = document.getElementById('userDropdown');
+        console.log('User toggle exists:', !!userToggle);
+        console.log('User menu exists:', !!userMenu);
+        if (userMenu) {
+            console.log('User menu classes:', userMenu.className);
+            console.log('User menu has show class:', userMenu.classList.contains('show'));
+        }
+        
+        // Test admin dropdown
+        const adminToggle = document.getElementById('adminDropdownToggle');
+        const adminMenu = document.getElementById('adminSubmenu');
+        console.log('Admin toggle exists:', !!adminToggle);
+        console.log('Admin menu exists:', !!adminMenu);
+        if (adminMenu) {
+            console.log('Admin menu classes:', adminMenu.className);
+            console.log('Admin menu has hidden class:', adminMenu.classList.contains('hidden'));
+        }
+        
+        // Test CSS
+        const testDiv = document.createElement('div');
+        testDiv.className = 'dropdown-menu show';
+        testDiv.style.position = 'absolute';
+        testDiv.style.top = '100px';
+        testDiv.style.left = '100px';
+        testDiv.style.width = '200px';
+        testDiv.style.height = '100px';
+        testDiv.style.backgroundColor = 'red';
+        testDiv.textContent = 'TEST DROPDOWN';
+        document.body.appendChild(testDiv);
+        setTimeout(() => {
+            document.body.removeChild(testDiv);
+            console.log('Test dropdown created and removed');
+        }, 2000);
     };
 
     // Calculator rendering using same defaults
