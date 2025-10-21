@@ -682,6 +682,29 @@ function setupSidebarDropdowns() {
             toggleSidebarMenu(reportsMenu, reportsArrow);
         };
     }
+    
+    // Export dropdown
+    const exportToggle = document.getElementById('exportDropdownToggle');
+    const exportMenu = document.getElementById('exportDropdown');
+    
+    if (exportToggle && exportMenu) {
+        exportToggle.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Export dropdown clicked!');
+            
+            // Close all other dropdowns first
+            closeAllSidebarMenus();
+            closeUserDropdown();
+            
+            // Toggle export menu
+            if (exportMenu.classList.contains('show')) {
+                exportMenu.classList.remove('show');
+            } else {
+                exportMenu.classList.add('show');
+            }
+        };
+    }
 }
 
 function toggleSidebarMenu(menu, arrow) {
@@ -705,6 +728,13 @@ function setupOutsideClick() {
         const userToggle = document.getElementById('userDropdownToggle');
         if (userMenu && userToggle && !userToggle.contains(e.target) && !userMenu.contains(e.target)) {
             userMenu.classList.remove('show');
+        }
+        
+        // Close export dropdown if clicking outside
+        const exportMenu = document.getElementById('exportDropdown');
+        const exportToggle = document.getElementById('exportDropdownToggle');
+        if (exportMenu && exportToggle && !exportToggle.contains(e.target) && !exportMenu.contains(e.target)) {
+            exportMenu.classList.remove('show');
         }
         
         // Close sidebar menus if clicking outside nav
@@ -732,6 +762,13 @@ function closeAllSidebarMenus() {
             arrow.classList.remove('rotated');
         }
     });
+}
+
+function closeUserDropdown() {
+    const userMenu = document.getElementById('userDropdown');
+    if (userMenu) {
+        userMenu.classList.remove('show');
+    }
 }
 
 // Function to close all sidebar dropdowns
