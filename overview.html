@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview - Jewelry Dashboard</title>
+    <link rel="stylesheet" href="CSS/overview.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 flex">
+    <!-- Mobile Overlay -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-30 lg:hidden hidden" onclick="toggleSidebar()"></div>
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-sidebar border-r border-[#334155] h-screen transition-all duration-300 overflow-hidden fixed lg:relative z-40 sidebar-open">
+        <div class="w-64 h-full flex flex-col">
+            <div class="p-6 border-b border-border bg-white">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="images/MainImage100.png" alt="Logo" class="h-10 w-auto object-contain"/>
+                </a>
+            </div>
+
+            <nav class="p-4 space-y-2 flex-1 overflow-y-auto">
+                <div>
+                    <button onclick="toggleMenu('Dashboard')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155] bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                            <span class="font-medium">Dashboard</span>
+                        </div>
+                        <i id="dashboard-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform rotate-180"></i>
+                    </button>
+                    <div id="dashboard-menu" class="ml-8 mt-1 space-y-1">
+                        <a href="/dashboard/overview" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1] bg-primary text-primary-foreground font-medium">
+                            Overview
+                        </a>
+                        <a href="/dashboard/analytics" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Analytics
+                        </a>
+                        <a href="/dashboard/reports" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Reports
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleMenu('Admin')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                            <span class="font-medium">Admin</span>
+                        </div>
+                        <i id="admin-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    <div id="admin-menu" class="ml-8 mt-1 space-y-1 hidden">
+                        <a href="/dashboard/admin/users" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Users
+                        </a>
+                        <a href="/dashboard/admin/roles" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Roles
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleMenu('Accounts')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                            <span class="font-medium">Accounts</span>
+                        </div>
+                        <i id="accounts-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    <div id="accounts-menu" class="ml-8 mt-1 space-y-1 hidden">
+                        <a href="/dashboard/accounts/all" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            All Accounts
+                        </a>
+                        <a href="/dashboard/accounts/ledger" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Ledger
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleMenu('Exchange')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
+                            <span class="font-medium">Exchange</span>
+                        </div>
+                        <i id="exchange-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    <div id="exchange-menu" class="ml-8 mt-1 space-y-1 hidden">
+                        <a href="/dashboard/exchange/new" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            New Exchange
+                        </a>
+                        <a href="/dashboard/exchange/history" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            History
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleMenu('Inventory')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="package" class="w-5 h-5"></i>
+                            <span class="font-medium">Inventory</span>
+                        </div>
+                        <i id="inventory-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    <div id="inventory-menu" class="ml-8 mt-1 space-y-1 hidden">
+                        <a href="/dashboard/inventory/stock" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Stock
+                        </a>
+                        <a href="/dashboard/inventory/categories" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Categories
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleMenu('Orders')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            <span class="font-medium">Orders</span>
+                        </div>
+                        <i id="orders-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    <div id="orders-menu" class="ml-8 mt-1 space-y-1 hidden">
+                        <a href="/dashboard/orders/all" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            All Orders
+                        </a>
+                        <a href="/dashboard/orders/pending" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Pending
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleMenu('Reports')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                            <span class="font-medium">Reports</span>
+                        </div>
+                        <i id="reports-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    <div id="reports-menu" class="ml-8 mt-1 space-y-1 hidden">
+                        <a href="/dashboard/reports/sales" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Sales Report
+                        </a>
+                        <a href="/dashboard/reports/inventory" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            Inventory Report
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleMenu('POS')" class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all text-[#f3f9f1] hover:bg-[#334155]">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="credit-card" class="w-5 h-5"></i>
+                            <span class="font-medium">POS</span>
+                        </div>
+                        <i id="pos-chevron" data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i>
+                    </button>
+                    <div id="pos-menu" class="ml-8 mt-1 space-y-1 hidden">
+                        <a href="/dashboard/pos/new" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            New Sale
+                        </a>
+                        <a href="/dashboard/pos/history" class="block px-4 py-2 rounded-lg text-sm transition-all text-[#f3f9f1]/80 hover:bg-[#334155] hover:text-[#f3f9f1]">
+                            History
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-h-screen lg:ml-0 transition-all duration-300 overflow-hidden">
+        <!-- Header -->
+        <header class="bg-card border-b border-border sticky top-0 z-30">
+            <div class="px-6 py-4 flex items-center justify-between">
+                <button onclick="toggleSidebar()" class="hover:bg-muted p-2 rounded-lg transition-colors" aria-label="Toggle sidebar">
+                    <span class="inline-flex items-center">
+                        <!-- Desktop toggle arrows -->
+                        <svg id="sidebar-icon-left" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <svg id="sidebar-icon-right" class="h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </span>
+                </button>
+                <div class="relative">
+                    <button onclick="toggleUserDropdown()" class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-muted transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                            <i data-lucide="user" class="w-5 h-5 text-primary"></i>
+                        </div>
+                    </button>
+
+                    <div id="user-dropdown" class="absolute right-0 mt-2 w-64 bg-popover border border-border rounded-lg shadow-elegant z-50 hidden">
+                        <div class="p-4 border-b border-border space-y-2">
+                            <div>
+                                <p class="text-xs text-muted-foreground">Welcome!</p>
+                                <p class="font-semibold text-foreground capitalize" id="user-name">Rati Krishna Moharana</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-muted-foreground">Profit Center</p>
+                                <p class="font-semibold text-foreground">Main</p>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <button onclick="changePassword()" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#f0f2f4] transition-colors text-foreground">
+                                <i data-lucide="key" class="w-4 h-4"></i>
+                                <span>Change Password</span>
+                            </button>
+                            <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#822e2e]/10 transition-colors text-destructive">
+                                <i data-lucide="log-out" class="w-4 h-4"></i>
+                                <span>Logout</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="max-w-7xl mx-auto p-6 space-y-6">
+                <!-- Header -->
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">Overview</h1>
+                    <p class="text-gray-600">Welcome to your jewelry business dashboard</p>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="flex gap-2 overflow-x-auto pb-2">
+                    <button 
+                        id="tab-current-rate"
+                        onclick="setActiveTab('current-rate')"
+                        class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-blue-600 text-white"
+                    >
+                        Current Gold Rate
+                    </button>
+                    <button 
+                        id="tab-calculator"
+                        onclick="setActiveTab('calculator')"
+                        class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                    >
+                        Sale Calculator
+                    </button>
+                    <button 
+                        id="tab-history"
+                        onclick="setActiveTab('history')"
+                        class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                    >
+                        Rate History
+                    </button>
+                    <button 
+                        id="tab-set-rate"
+                        onclick="setActiveTab('set-rate')"
+                        class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                    >
+                        Set Rate
+                    </button>
+                </div>
+
+                <!-- Current Gold Rate Section -->
+                <section id="current-rate-section" class="block">
+                    <div class="mb-6 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center">
+                            <i data-lucide="coins" class="w-5 h-5 text-orange-600"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold text-foreground">Gold Rate 14-Oct-25</h2>
+                            <p class="text-sm text-muted-foreground">24K - 10Gram</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 0ms">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                    <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                </div>
+                                <p class="text-3xl font-bold text-foreground mb-1">11,433</p>
+                                <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-foreground">Gold : 24K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 100ms">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                    <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                </div>
+                                <p class="text-3xl font-bold text-foreground mb-1">10,480</p>
+                                <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-foreground">Gold : 22K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 200ms">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                    <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                </div>
+                                <p class="text-3xl font-bold text-foreground mb-1">9,528</p>
+                                <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-foreground">Gold : 20K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 300ms">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                    <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                </div>
+                                <p class="text-3xl font-bold text-foreground mb-1">8,575</p>
+                                <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-foreground">Gold : 18K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 400ms">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                    <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                </div>
+                                <p class="text-3xl font-bold text-foreground mb-1">7,622</p>
+                                <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-foreground">Gold : 16K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 500ms">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                    <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                </div>
+                                <p class="text-3xl font-bold text-foreground mb-1">6,669</p>
+                                <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-foreground">Gold : 14K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 600ms">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                    <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                </div>
+                                <p class="text-3xl font-bold text-foreground mb-1">5,716</p>
+                                <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-foreground">Gold : 12K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sale Price Calculator -->
+                <section id="calculator-section" class="hidden">
+                    <div class="mb-6 flex items-center gap-3 border-b border-border pb-4">
+                        <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+                            <i data-lucide="calculator" class="w-5 h-5 text-secondary"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold text-foreground">Sale Price Calculator</h2>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="relative">
+                                <select id="category-select" name="category" onchange="handleCategoryChange()" class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg appearance-none text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-300 cursor-pointer" aria-label="Choose category">
+                                    <option value="" disabled selected hidden>Select category</option>
+                                    <option value="rings">Rings</option>
+                                    <option value="necklaces">Necklaces</option>
+                                    <option value="earrings">Earrings</option>
+                                    <option value="bracelets">Bracelets</option>
+                                </select>
+                                <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted-foreground)] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <label for="category-select" class="floating-label absolute left-4 pointer-events-none text-[var(--muted-foreground)] top-3.5 text-sm">Category</label>
+                            </div>
+                            <div class="relative">
+                                <select id="item-select" name="item" onchange="handleItemChange()" disabled class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg appearance-none text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-300 cursor-not-allowed" aria-label="Choose item">
+                                    <option value="" disabled selected hidden>Select item</option>
+                                </select>
+                                <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted-foreground)] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <label for="item-select" class="floating-label absolute left-4 pointer-events-none text-[var(--muted-foreground)] top-3.5 text-sm">Item</label>
+                            </div>
+                        </div>
+
+                        <div id="calculator-content" class="hidden space-y-6 animate-fade-in">
+                            <!-- Beautiful Table -->
+                            <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
+                                <table class="w-full table-auto">
+                                    <thead>
+                                        <tr class="bg-gradient-to-r from-blue-600 to-blue-500">
+                                            <th class="px-4 md:px-6 py-3 md:py-4 text-left text-xs md:text-sm font-bold text-white whitespace-nowrap">VARIANT</th>
+                                            <th class="px-4 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-bold text-white whitespace-nowrap">WEIGHT (g)</th>
+                                            <th class="px-4 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-bold text-white whitespace-nowrap">RATE (₹/g)</th>
+                                            <th class="px-4 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-bold text-white whitespace-nowrap">DISCOUNT (%)</th>
+                                            <th class="px-4 md:px-6 py-3 md:py-4 text-right text-xs md:text-sm font-bold text-white whitespace-nowrap">AMOUNT (₹)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-white hover:bg-gray-50 transition-colors border-b border-gray-200">
+                                            <td class="px-4 md:px-6 py-3 md:py-4">
+                                                <span class="font-semibold text-gray-900">Gold 22K</span>
+                                            </td>
+                                            <td class="px-4 md:px-6 py-3 md:py-4">
+                                                <input
+                                                    type="number"
+                                                    class="w-full px-2 md:px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-center text-gray-900 cursor-not-allowed text-sm md:text-base"
+                                                    value="15.50"
+                                                    readonly
+                                                />
+                                            </td>
+                                            <td class="px-4 md:px-6 py-3 md:py-4">
+                                                <input
+                                                    type="number"
+                                                    class="w-full px-2 md:px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-center text-gray-900 cursor-not-allowed text-sm md:text-base"
+                                                    value="10480"
+                                                    readonly
+                                                />
+                                            </td>
+                                            <td class="px-4 md:px-6 py-3 md:py-4">
+                                                <input
+                                                    type="number"
+                                                    class="w-full px-2 md:px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-center text-gray-900 cursor-not-allowed text-sm md:text-base"
+                                                    value="5"
+                                                    readonly
+                                                />
+                                            </td>
+                                            <td class="px-4 md:px-6 py-3 md:py-4 text-right">
+                                                <span class="text-base md:text-lg font-bold text-blue-600 whitespace-nowrap">₹162,440.00</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Next Level Summary UI -->
+                            <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-gray-100 border-2 border-blue-200 shadow-2xl">
+                                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-5"></div>
+                                <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600 rounded-full blur-3xl opacity-5"></div>
+                                
+                                <div class="relative p-8 space-y-6">
+                                    <div class="flex justify-between items-center pb-4 border-b-2 border-dashed border-gray-300">
+                                        <span class="text-lg font-semibold text-gray-600">Total Amount</span>
+                                        <span class="text-2xl font-bold text-blue-600">₹154,318.00</span>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center pb-4 border-b-2 border-dashed border-gray-300">
+                                        <span class="text-lg font-semibold text-gray-600 flex items-center gap-2">
+                                            GST (3%)
+                                            <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Tax</span>
+                                        </span>
+                                        <span class="text-2xl font-bold text-blue-600">₹4,629.54</span>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center pt-4 bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 border-2 border-green-500" style="background: linear-gradient(to right, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1)); border-color: rgba(34, 197, 94, 0.3);">
+                                        <div>
+                                            <p class="text-sm text-gray-600 mb-1">Total Payable</p>
+                                            <p class="text-3xl font-extrabold text-green-600">₹158,947.54</p>
+                                        </div>
+                                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center" style="background-color: rgba(34, 197, 94, 0.2);">
+                                            <i data-lucide="calculator" class="w-8 h-8 text-green-600"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gold Rate History -->
+                <section id="history-section" class="hidden">
+                    <div class="mb-6 flex items-center gap-3 border-b border-border pb-4">
+                        <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-secondary"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold text-foreground">Gold Rate History</h2>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <div class="max-w-md mb-6">
+                            <label class="text-sm font-medium text-secondary mb-2 flex items-center gap-2">
+                                <i data-lucide="coins" class="w-4 h-4"></i>
+                                Select Date
+                            </label>
+                            <div class="floating-input">
+                                <input
+                                    id="history-date"
+                                    type="date"
+                                    onchange="handleHistoryDateChange()"
+                                    class="peer w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                                    placeholder="Select Date"
+                                />
+                                <label class="absolute left-4 transition-all duration-300 pointer-events-none text-muted-foreground top-3.5 text-sm">Select Date</label>
+                            </div>
+                        </div>
+
+                        <div id="history-content" class="hidden animate-fade-in">
+                            <div class="grid grid-cols-4 gap-4 mb-4 text-sm font-semibold text-gray-900 bg-gray-50 p-4 rounded-lg">
+                                <div>DATE</div>
+                                <div>TIME</div>
+                                <div>RATE (24K 10G)</div>
+                                <div>RATE (24K 1G)</div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="grid grid-cols-4 gap-4 p-4 bg-white border border-gray-200 rounded-lg">
+                                    <div class="text-gray-900">23-Sep-25</div>
+                                    <div class="text-gray-900">10:15 AM</div>
+                                    <div class="font-semibold text-blue-600">₹ 114,330</div>
+                                    <div class="font-semibold text-blue-600">₹ 11,433</div>
+                                </div>
+                                <div class="grid grid-cols-4 gap-4 p-4 bg-white border border-gray-200 rounded-lg">
+                                    <div class="text-gray-900">22-Sep-25</div>
+                                    <div class="text-gray-900">04:05 PM</div>
+                                    <div class="font-semibold text-blue-600">₹ 113,980</div>
+                                    <div class="font-semibold text-blue-600">₹ 11,398</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Set Gold Rate Today -->
+                <section id="set-rate-section" class="hidden">
+                    <div class="mb-6 flex items-center gap-3 border-b border-border pb-4">
+                        <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+                            <i data-lucide="settings" class="w-5 h-5 text-secondary"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold text-foreground">Set Gold Rate Today</h2>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <div class="max-w-md space-y-4">
+                            <label class="text-sm font-medium text-muted-foreground mb-2 flex items-center gap-2">
+                                <i data-lucide="coins" class="w-4 h-4"></i>
+                                Enter 24K per Gram (INR)
+                            </label>
+                            <div class="floating-input">
+                                <input
+                                    id="today-rate"
+                                    type="number"
+                                    step="0.01"
+                                    class="peer w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                                    placeholder="24K Per Gram (₹)"
+                                />
+                                <label class="absolute left-4 transition-all duration-300 pointer-events-none text-muted-foreground top-3.5 text-sm">24K Per Gram (₹)</label>
+                            </div>
+                            <button
+                                onclick="updateRate()"
+                                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-3 rounded-md transition-colors"
+                            >
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/overview.js"></script>
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/tabler-sprite.svg">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/dashboard.css">
+    
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Wrapper -->
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar bg-white border-r border-gray-200 fixed top-0 left-0 h-screen z-40 overflow-y-auto shadow-lg" style="z-index: 999;">
+            <!-- Brand Logo -->
+            <div class="p-6 border-gray-200">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="flex items-center justify-center">
+                        <img src="images/MainImage100.png" alt="Logo" class="h-10 w-auto object-contain"/>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="py-4">
+                <ul class="space-y-1">
+                    <!-- Dashboard -->
+                    <li>
+                        <a href="#" class="nav-link active flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                            <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-columns-gap" viewBox="0 0 16 16">
+                                <path d="M6 1v3H1V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm14 12v3h-5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM6 8v7H1V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm14-6v7h-5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/>
+                            </svg>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- Admin -->
+                    <li>
+                        <div class="relative">
+                            <button id="adminDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                                  </svg>
+                                <span class="nav-text">Admin</span>
+                                <svg id="adminArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="adminSubmenu" class="hidden">
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Users</span>
+                                    </a>
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Profit Centers</span>
+                                    </a>
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Categories</span>
+                                    </a>
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Variants</span>
+                                    </a>
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Party Master</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Accounts -->
+                    <li>
+                        <div class="relative">
+                            <button id="accountsDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                                </svg>
+                                <span class="nav-text">Accounts</span>
+                                <svg id="accountsArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="accountsSubmenu" class="hidden">
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Journal Voucher</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">GL Summary</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">GL Details</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Trial Balance</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Party Ledger</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Exchange -->
+                    <li>
+                        <div class="relative">
+                            <button id="exchangeDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                                </svg>
+                                <span class="nav-text">Exchange</span>
+                                <svg id="exchangeArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="exchangeSubmenu" class="hidden">
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Existing Invoice</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Inventory -->
+                    <li>
+                        <div class="relative">
+                            <button id="inventoryDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                                </svg>
+                                <span class="nav-text">Inventory</span>
+                                <svg id="inventoryArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="inventorySubmenu" class="hidden">
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Virtual Stock - Entry</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Purchase Entry</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Virtual Stock - Approval</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Purchase Approval</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Stock</span>
+                                </a>
+                                <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Return Approval Stock</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Orders -->
+                    <li>
+                        <div class="relative">
+                            <button id="ordersDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                                  </svg>
+                                <span class="nav-text">Orders</span>
+                                <svg id="ordersArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="ordersSubmenu" class="hidden">
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Receive Order</span>
+                                    </a>
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Reports</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Reports -->
+                    <li>
+                        <div class="relative">
+                            <button id="reportsDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                                  </svg>
+                                <span class="nav-text">Reports</span>
+                                <svg id="reportsArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="reportsSubmenu" class="hidden">
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Vendor Sales Book</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div id="mainContent" class="main-content flex-1">
+            <!-- Header -->
+            <header class="navbar-glass fixed top-0 right-0 w-full z-50" style="z-index: 1000;">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center gap-32">
+                        <!-- Logo -->
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center justify-center">
+                                <img src="images/MainImage100.png" alt="Logo" class="h-10 w-auto object-contain"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Sidebar Toggle -->
+                        <div class="hidden lg:block">
+                            <button id="sidebarToggle" class="sidebar-toggle text-gray-600 hover:text-primary-500 transition-colors duration-200" style="width: 40px; height: 40px; position: relative; z-index: 1001;">
+                                <!-- Expanded State - Left Arrow -->
+                                <span id="collapseMini" class="collapse-mini">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                </span>
+                                <!-- Collapsed State - Right Arrow -->
+                                <span id="collapseExpanded" class="collapse-expanded hidden">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <!-- Mobile Menu Toggle -->
+                        <button id="mobileMenuToggle" class="lg:hidden p-2 text-gray-600 hover:text-primary-500 transition-colors duration-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <div class="relative dropdown">
+                            <button id="userDropdownToggle" onclick="toggleUserDropdown()" class="flex items-center gap-2 p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full">
+                            </button>
+                            <div id="userDropdown" class="dropdown-menu w-64">
+                                <div class="p-4 border-b border-border space-y-2">
+                                    <div>
+                                        <p class="text-xs text-[#6b7280]">Welcome!</p>
+                                        <p class="font-semibold text-[#111827] capitalize" id="user-name">Rati Krishna Moharana</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-[#6b7280]">Profit Center</p>
+                                        <p class="font-semibold text-[#111827]">Main</p>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <button onclick="changePassword()" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#f0f2f4] transition-colors text-[#111827]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                                            <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5"/>
+                                            <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                          </svg>
+                                        <span>Change Password</span>
+                                    </button>
+                                    <button onclick="logout()" class="w-full text-[#ef4444] flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#822e2e]/10 transition-colors text-destructive">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-indent" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M3 8a.5.5 0 0 1 .5-.5h6.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H3.5A.5.5 0 0 1 3 8"/>
+                                            <path fill-rule="evenodd" d="M12.5 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5"/>
+                                        </svg>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="pt-20 px-6 pb-6">
+                <!-- Breadcrumb -->
+                <nav class="mb-6 mt-6">
+                    <ol class="flex items-center space-x-2 text-sm">
+                        <li><a href="#" class="text-primary-500 hover:text-primary-600">Home</a></li>
+                        <li class="text-gray-400">/</li>
+                        <li class="text-gray-600">Dashboard</li>
+                    </ol>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+                        <p class="text-gray-600">Welcome to your jewelry business dashboard</p>
+                    </div>
+                </div>
+
+                <!-- Overview Content -->
+                <div class="max-w-7xl p-6 space-y-6">
+                    <!-- Navigation Tabs -->
+                    <div class="flex gap-2 overflow-x-auto pb-2">
+                        <button 
+                            id="tab-current-rate"
+                            onclick="setActiveTab('current-rate')"
+                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-blue-600 text-white"
+                        >
+                            Current Gold Rate
+                        </button>
+                        <button 
+                            id="tab-calculator"
+                            onclick="setActiveTab('calculator')"
+                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                        >
+                            Sale Calculator
+                        </button>
+                        <button 
+                            id="tab-history"
+                            onclick="setActiveTab('history')"
+                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                        >
+                            Rate History
+                        </button>
+                        <button 
+                            id="tab-set-rate"
+                            onclick="setActiveTab('set-rate')"
+                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                        >
+                            Set Rate
+                        </button>
+                    </div>
+
+                    <!-- Current Gold Rate Section -->
+                    <section id="current-rate-section" class="block">
+                        <div class="mb-6 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center">
+                                <i data-lucide="coins" class="w-5 h-5 text-orange-600"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-semibold text-foreground">Gold Rate 14-Oct-25</h2>
+                                <p class="text-sm text-muted-foreground">24K - 10Gram</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 0ms">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold text-foreground mb-1">11,433</p>
+                                    <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-foreground">Gold : 24K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 100ms">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold text-foreground mb-1">10,480</p>
+                                    <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-foreground">Gold : 22K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 200ms">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold text-foreground mb-1">9,528</p>
+                                    <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-foreground">Gold : 20K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 300ms">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold text-foreground mb-1">8,575</p>
+                                    <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-foreground">Gold : 18K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 400ms">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold text-foreground mb-1">7,622</p>
+                                    <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-foreground">Gold : 16K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 500ms">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold text-foreground mb-1">6,669</p>
+                                    <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-foreground">Gold : 14K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 600ms">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold text-foreground mb-1">5,716</p>
+                                    <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-foreground">Gold : 12K</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Sale Price Calculator -->
+                    <section id="calculator-section" class="hidden">
+                        <div class="mb-6 flex items-center gap-3 border-b border-border pb-4">
+                            <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+                                <i data-lucide="calculator" class="w-5 h-5 text-secondary"></i>
+                            </div>
+                            <h2 class="text-xl font-semibold text-foreground">Sale Price Calculator</h2>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="relative">
+                                    <select id="category-select" name="category" onchange="handleCategoryChange()" class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg appearance-none text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-300 cursor-pointer" aria-label="Choose category">
+                                        <option value="" disabled selected hidden>Select category</option>
+                                        <option value="rings">Rings</option>
+                                        <option value="necklaces">Necklaces</option>
+                                        <option value="earrings">Earrings</option>
+                                        <option value="bracelets">Bracelets</option>
+                                    </select>
+                                    <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted-foreground)] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                    <label for="category-select" class="floating-label absolute left-4 pointer-events-none text-[var(--muted-foreground)] top-3.5 text-sm">Category</label>
+                                </div>
+                                <div class="relative">
+                                    <select id="item-select" name="item" onchange="handleItemChange()" disabled class="peer w-full px-4 py-3 bg-[var(--card)] border border-[var(--border)] rounded-lg appearance-none text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-300 cursor-not-allowed" aria-label="Choose item">
+                                        <option value="" disabled selected hidden>Select item</option>
+                                    </select>
+                                    <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted-foreground)] pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                    <label for="item-select" class="floating-label absolute left-4 pointer-events-none text-[var(--muted-foreground)] top-3.5 text-sm">Item</label>
+                                </div>
+                            </div>
+
+                            <div id="calculator-content" class="hidden space-y-6 animate-fade-in">
+                                <!-- Beautiful Table -->
+                                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
+                                    <table class="w-full table-auto">
+                                        <thead>
+                                            <tr class="bg-gradient-to-r from-blue-600 to-blue-500">
+                                                <th class="px-4 md:px-6 py-3 md:py-4 text-left text-xs md:text-sm font-bold text-white whitespace-nowrap">VARIANT</th>
+                                                <th class="px-4 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-bold text-white whitespace-nowrap">WEIGHT (g)</th>
+                                                <th class="px-4 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-bold text-white whitespace-nowrap">RATE (₹/g)</th>
+                                                <th class="px-4 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-bold text-white whitespace-nowrap">DISCOUNT (%)</th>
+                                                <th class="px-4 md:px-6 py-3 md:py-4 text-right text-xs md:text-sm font-bold text-white whitespace-nowrap">AMOUNT (₹)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-white hover:bg-gray-50 transition-colors border-b border-gray-200">
+                                                <td class="px-4 md:px-6 py-3 md:py-4">
+                                                    <span class="font-semibold text-gray-900">Gold 22K</span>
+                                                </td>
+                                                <td class="px-4 md:px-6 py-3 md:py-4">
+                                                    <input
+                                                        type="number"
+                                                        class="w-full px-2 md:px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-center text-gray-900 cursor-not-allowed text-sm md:text-base"
+                                                        value="15.50"
+                                                        readonly
+                                                    />
+                                                </td>
+                                                <td class="px-4 md:px-6 py-3 md:py-4">
+                                                    <input
+                                                        type="number"
+                                                        class="w-full px-2 md:px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-center text-gray-900 cursor-not-allowed text-sm md:text-base"
+                                                        value="10480"
+                                                        readonly
+                                                    />
+                                                </td>
+                                                <td class="px-4 md:px-6 py-3 md:py-4">
+                                                    <input
+                                                        type="number"
+                                                        class="w-full px-2 md:px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-center text-gray-900 cursor-not-allowed text-sm md:text-base"
+                                                        value="5"
+                                                        readonly
+                                                    />
+                                                </td>
+                                                <td class="px-4 md:px-6 py-3 md:py-4 text-right">
+                                                    <span class="text-base md:text-lg font-bold text-blue-600 whitespace-nowrap">₹162,440.00</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Next Level Summary UI -->
+                                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-white to-gray-100 border-2 border-blue-200 shadow-2xl">
+                                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-5"></div>
+                                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600 rounded-full blur-3xl opacity-5"></div>
+                                    
+                                    <div class="relative p-8 space-y-6">
+                                        <div class="flex justify-between items-center pb-4 border-b-2 border-dashed border-gray-300">
+                                            <span class="text-lg font-semibold text-gray-600">Total Amount</span>
+                                            <span class="text-2xl font-bold text-blue-600">₹154,318.00</span>
+                                        </div>
+                                        
+                                        <div class="flex justify-between items-center pb-4 border-b-2 border-dashed border-gray-300">
+                                            <span class="text-lg font-semibold text-gray-600 flex items-center gap-2">
+                                                GST (3%)
+                                                <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Tax</span>
+                                            </span>
+                                            <span class="text-2xl font-bold text-blue-600">₹4,629.54</span>
+                                        </div>
+                                        
+                                        <div class="flex justify-between items-center pt-4 bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 border-2 border-green-500" style="background: linear-gradient(to right, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1)); border-color: rgba(34, 197, 94, 0.3);">
+                                            <div>
+                                                <p class="text-sm text-gray-600 mb-1">Total Payable</p>
+                                                <p class="text-3xl font-extrabold text-green-600">₹158,947.54</p>
+                                            </div>
+                                            <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center" style="background-color: rgba(34, 197, 94, 0.2);">
+                                                <i data-lucide="calculator" class="w-8 h-8 text-green-600"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Gold Rate History -->
+                    <section id="history-section" class="hidden">
+                        <div class="mb-6 flex items-center gap-3 border-b border-border pb-4">
+                            <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+                                <i data-lucide="trending-up" class="w-5 h-5 text-secondary"></i>
+                            </div>
+                            <h2 class="text-xl font-semibold text-foreground">Gold Rate History</h2>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                            <div class="max-w-md mb-6">
+                                <label class="text-sm font-medium text-secondary mb-2 flex items-center gap-2">
+                                    <i data-lucide="coins" class="w-4 h-4"></i>
+                                    Select Date
+                                </label>
+                                <div class="floating-input">
+                                    <input
+                                        id="history-date"
+                                        type="date"
+                                        onchange="handleHistoryDateChange()"
+                                        class="peer w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                                        placeholder="Select Date"
+                                    />
+                                    <label class="absolute left-4 transition-all duration-300 pointer-events-none text-muted-foreground top-3.5 text-sm">Select Date</label>
+                                </div>
+                            </div>
+
+                            <div id="history-content" class="hidden animate-fade-in">
+                                <div class="grid grid-cols-4 gap-4 mb-4 text-sm font-semibold text-gray-900 bg-gray-50 p-4 rounded-lg">
+                                    <div>DATE</div>
+                                    <div>TIME</div>
+                                    <div>RATE (24K 10G)</div>
+                                    <div>RATE (24K 1G)</div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="grid grid-cols-4 gap-4 p-4 bg-white border border-gray-200 rounded-lg">
+                                        <div class="text-gray-900">23-Sep-25</div>
+                                        <div class="text-gray-900">10:15 AM</div>
+                                        <div class="font-semibold text-blue-600">₹ 114,330</div>
+                                        <div class="font-semibold text-blue-600">₹ 11,433</div>
+                                    </div>
+                                    <div class="grid grid-cols-4 gap-4 p-4 bg-white border border-gray-200 rounded-lg">
+                                        <div class="text-gray-900">22-Sep-25</div>
+                                        <div class="text-gray-900">04:05 PM</div>
+                                        <div class="font-semibold text-blue-600">₹ 113,980</div>
+                                        <div class="font-semibold text-blue-600">₹ 11,398</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Set Gold Rate Today -->
+                    <section id="set-rate-section" class="hidden">
+                        <div class="mb-6 flex items-center gap-3 border-b border-border pb-4">
+                            <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+                                <i data-lucide="settings" class="w-5 h-5 text-secondary"></i>
+                            </div>
+                            <h2 class="text-xl font-semibold text-foreground">Set Gold Rate Today</h2>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                            <div class="max-w-md space-y-4">
+                                <label class="text-sm font-medium text-muted-foreground mb-2 flex items-center gap-2">
+                                    <i data-lucide="coins" class="w-4 h-4"></i>
+                                    Enter 24K per Gram (INR)
+                                </label>
+                                <div class="floating-input">
+                                    <input
+                                        id="today-rate"
+                                        type="number"
+                                        step="0.01"
+                                        class="peer w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                                        placeholder="24K Per Gram (₹)"
+                                    />
+                                    <label class="absolute left-4 transition-all duration-300 pointer-events-none text-muted-foreground top-3.5 text-sm">24K Per Gram (₹)</label>
+                                </div>
+                                <button
+                                    onclick="updateRate()"
+                                    class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-3 rounded-md transition-colors"
+                                >
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="JS/dashboard.js"></script>
+</body>
+</html>

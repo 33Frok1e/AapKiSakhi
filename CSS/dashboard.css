@@ -1,0 +1,640 @@
+/* Custom styles for exact matching */
+.navbar-glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px dashed #dfe3e8;
+}
+
+.sidebar {
+    width: 280px;
+    transition: width 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar.collapsed .nav-text {
+    display: none;
+}
+
+.sidebar.collapsed .nav-link {
+    justify-content: center;
+    padding: 0.75rem;
+}
+
+.sidebar.collapsed .dropdown-menu {
+    display: none !important;
+}
+
+.main-content {
+    margin-left: 280px;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    width: calc(100% - 280px);
+}
+
+.main-content.sidebar-collapsed {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+}
+
+/* Ensure table container adjusts with sidebar */
+.table-responsive {
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* When sidebar is collapsed, adjust table positioning */
+.sidebar.collapsed ~ .main-content .table-responsive {
+    margin-left: 0;
+}
+
+/* When sidebar is expanded, ensure proper table positioning */
+.sidebar:not(.collapsed) ~ .main-content .table-responsive {
+    margin-left: 0;
+}
+
+.nav-link.active {
+    background-color: #e0f2fe;
+    color: #024b83;
+}
+
+.nav-link.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #024b83;
+}
+
+.table thead th {
+    background-color: #f9fafb;
+    border-bottom: 2px solid #f4f6f8;
+    color: #637381;
+}
+
+.table tbody td {
+    border-bottom: 1px solid #f4f6f8;
+}
+
+.table tbody tr:hover {
+    background-color: #fcfdfd;
+}
+
+.card-lg {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: 0.75rem;
+    border: 0;
+}
+
+.sorting {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.sorting:hover {
+    background-color: #f9fafb;
+}
+
+.sort-icon {
+    margin-left: 0.5rem;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.sorting:hover .sort-icon {
+    opacity: 1;
+}
+
+.sorting.asc .sort-icon::before {
+    content: '▲';
+}
+
+.sorting.desc .sort-icon::before {
+    content: '▼';
+}
+
+.badge-success {
+    background-color: #d3fcd2;
+    color: #22c55e;
+}
+
+.badge-danger {
+    background-color: #fef2f2;
+    color: #ff5630;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #637381;
+}
+
+.btn-ghost:hover {
+    background-color: #f9fafb;
+    color: #454f5b;
+}
+
+.btn-icon {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #1c252e;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1c252e transparent transparent transparent;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 1050;
+    min-width: 160px;
+    padding: 0.5rem 0;
+    margin: 0;
+    background-color: #fff;
+    border: 1px solid #dfe3e8;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+    display: block;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Right-aligned dropdown for user menu */
+.dropdown:last-child .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #454f5b;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.dropdown-item:hover {
+    color: #1c252e;
+    background-color: #f9fafb;
+}
+
+.dropdown-divider {
+    height: 0;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid #dfe3e8;
+}
+
+/* Sidebar toggle icons */
+.sidebar-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    z-index: 1001; /* Higher than sidebar z-index */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow to make it stand out */
+}
+
+.sidebar-toggle:hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+    transform: scale(1.05);
+}
+
+.collapse-mini,
+.collapse-expanded {
+    position: absolute;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.collapse-mini.hidden,
+.collapse-expanded.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Pages dropdown arrow */
+#pagesArrow,
+#adminArrow,
+#accountsArrow,
+#exchangeArrow,
+#inventoryArrow,
+#ordersArrow,
+#reportsArrow {
+    transform: rotate(0deg);
+}
+
+#pagesArrow.rotated,
+#adminArrow.rotated,
+#accountsArrow.rotated,
+#exchangeArrow.rotated,
+#inventoryArrow.rotated,
+#ordersArrow.rotated,
+#reportsArrow.rotated {
+    transform: rotate(180deg);
+}
+
+/* Mobile responsive */
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 0 !important;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px !important;
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0;
+    }
+    
+    .table {
+        min-width: 900px;
+        font-size: 0.75rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.5rem 0.25rem;
+        white-space: nowrap;
+        font-size: 0.75rem;
+    }
+    
+    .product-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .btn-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.125rem;
+    }
+    
+    .badge {
+        font-size: 0.625rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    .pagination button {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .card-header {
+        padding: 1rem;
+    }
+    
+    .card-header .flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .card-header .flex > div:first-child {
+        width: 100%;
+    }
+    
+    .card-header .flex > div:last-child {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .table {
+        min-width: 700px;
+    }
+    
+    .table th:nth-child(5),
+    .table th:nth-child(6),
+    .table td:nth-child(5),
+    .table td:nth-child(6) {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .table {
+        min-width: 500px;
+    }
+    
+    .table th:nth-child(7),
+    .table td:nth-child(7) {
+        display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .table {
+        min-width: 400px;
+    }
+    
+    .table th:nth-child(4),
+    .table td:nth-child(4) {
+        display: none;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f9fafb;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dfe3e8;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c4cdd5;
+}
+
+/* Focus states */
+.btn:focus,
+.form-control:focus,
+.form-check-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 167, 111, 0.25);
+}
+
+/* Selection */
+::selection {
+    background-color: rgba(0, 167, 111, 0.2);
+    color: #1c252e;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+/* ===== Overview Section Styles (appended, non-overriding) ===== */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+}
+
+.floating-input {
+    position: relative;
+}
+
+.floating-input input:focus + label,
+.floating-input input:not(:placeholder-shown) + label,
+.floating-input input[value]:not([value=""]) + label {
+    transform: translateY(-1.5rem) scale(0.85);
+    color: #f97316;
+    background-color: white;
+    padding: 0 4px;
+}
+
+.floating-input label {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.floating-select {
+    position: relative;
+}
+
+.floating-select select:focus + label,
+.floating-select select:not([value=""]) + label,
+.floating-select select[value]:not([value=""]) + label {
+    transform: translateY(-1.5rem) scale(0.85);
+    color: #f97316;
+    background-color: white;
+    padding: 0 4px;
+}
+
+.floating-select label {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.shadow-elegant {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.bg-card { background-color: white; }
+.text-card-foreground { color: #0f172a; }
+.border-border { border-color: #e2e8f0; }
+.text-foreground { color: #0f172a; }
+.text-muted-foreground { color: #64748b; }
+.bg-muted { background-color: #f0f2f4; }
+.text-primary { color: #f97316; }
+.bg-primary { background-color: #f97316; }
+.text-primary-foreground { color: white; }
+.text-secondary { color: #64748b; }
+.bg-secondary { background-color: #f1f5f9; }
+.bg-popover { background-color: white; }
+.text-destructive { color: #ef4444; }
+.bg-destructive { background-color: #ef4444; }
+
+:root {
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --foreground: #111827;
+    --muted-foreground: #6b7280;
+    --primary: #2563eb;
+}
+
+.floating-label {
+    transition: all 0.3s ease;
+    opacity: 0; /* hide label until it floats */
+}
+.floating-label.floated {
+    top: -0.625rem;
+    font-size: 0.75rem;
+    background: var(--card);
+    padding: 0 0.25rem;
+    color: var(--primary);
+    border-radius: 0.25rem;
+    opacity: 1; /* visible only when floated */
+}
+.floating-label.floated::after {
+    content: "";
+    display: block;
+}
+
+/* Sidebar submenus */
+#adminSubmenu,
+#accountsSubmenu,
+#exchangeSubmenu,
+#inventorySubmenu,
+#ordersSubmenu,
+#reportsSubmenu {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#adminSubmenu:not(.hidden),
+#accountsSubmenu:not(.hidden),
+#exchangeSubmenu:not(.hidden),
+#inventorySubmenu:not(.hidden),
+#ordersSubmenu:not(.hidden),
+#reportsSubmenu:not(.hidden) {
+    max-height: 500px;
+}
+
+/* Dropdown arrows rotation */
+#adminArrow,
+#accountsArrow,
+#exchangeArrow,
+#inventoryArrow,
+#ordersArrow,
+#reportsArrow {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+#adminArrow.rotated,
+#accountsArrow.rotated,
+#exchangeArrow.rotated,
+#inventoryArrow.rotated,
+#ordersArrow.rotated,
+#reportsArrow.rotated {
+    transform: rotate(180deg);
+}
+
+/* Ensure proper z-index for dropdowns */
+.dropdown-menu {
+    z-index: 1060;
+}
