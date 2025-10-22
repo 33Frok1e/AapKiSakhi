@@ -13,6 +13,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="CSS/dashboard.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
 </head>
 <body class="bg-gray-50 font-sans">
@@ -312,28 +313,28 @@
                         <button 
                             id="tab-current-rate"
                             onclick="setActiveTab('current-rate')"
-                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-blue-600 text-white"
+                            class="px-6 py-2 rounded-lg shadow-lg font-medium whitespace-nowrap transition-colors bg-blue-600 text-white"
                         >
                             Current Gold Rate
                         </button>
                         <button 
                             id="tab-calculator"
                             onclick="setActiveTab('calculator')"
-                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                            class="px-6 py-2 rounded-lg shadow-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
                         >
                             Sale Calculator
                         </button>
                         <button 
                             id="tab-history"
                             onclick="setActiveTab('history')"
-                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                            class="px-6 py-2 rounded-lg shadow-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
                         >
                             Rate History
                         </button>
                         <button 
                             id="tab-set-rate"
                             onclick="setActiveTab('set-rate')"
-                            class="px-6 py-2 rounded-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
+                            class="px-6 py-2 rounded-lg shadow-lg font-medium whitespace-nowrap transition-colors bg-white text-gray-900 hover:bg-gray-100"
                         >
                             Set Rate
                         </button>
@@ -343,7 +344,7 @@
                     <section id="current-rate-section" class="block">
                         <div class="mb-6 flex items-center gap-3">
                             <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center">
-                                <i data-lucide="coins" class="w-5 h-5 text-orange-600"></i>
+                                <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                             </div>
                             <div>
                                 <h2 class="text-xl font-semibold text-foreground">Gold Rate 14-Oct-25</h2>
@@ -354,7 +355,7 @@
                             <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 0ms">
                                 <div class="relative">
                                     <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
-                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                        <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                                     </div>
                                     <p class="text-3xl font-bold text-foreground mb-1">11,433</p>
                                     <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
@@ -366,7 +367,7 @@
                             <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 100ms">
                                 <div class="relative">
                                     <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
-                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                        <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                                     </div>
                                     <p class="text-3xl font-bold text-foreground mb-1">10,480</p>
                                     <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
@@ -378,7 +379,7 @@
                             <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 200ms">
                                 <div class="relative">
                                     <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
-                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                        <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                                     </div>
                                     <p class="text-3xl font-bold text-foreground mb-1">9,528</p>
                                     <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
@@ -390,7 +391,7 @@
                             <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 300ms">
                                 <div class="relative">
                                     <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
-                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                        <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                                     </div>
                                     <p class="text-3xl font-bold text-foreground mb-1">8,575</p>
                                     <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
@@ -402,7 +403,7 @@
                             <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 400ms">
                                 <div class="relative">
                                     <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
-                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                        <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                                     </div>
                                     <p class="text-3xl font-bold text-foreground mb-1">7,622</p>
                                     <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
@@ -414,7 +415,7 @@
                             <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 500ms">
                                 <div class="relative">
                                     <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
-                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                        <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                                     </div>
                                     <p class="text-3xl font-bold text-foreground mb-1">6,669</p>
                                     <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
@@ -426,7 +427,7 @@
                             <div class="gold-rate-card rounded-lg border bg-card text-card-foreground shadow-sm p-6 relative overflow-hidden group hover:shadow-lg transition-all duration-300 animate-fade-in" style="animation-delay: 600ms">
                                 <div class="relative">
                                     <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-4">
-                                        <i data-lucide="coins" class="w-6 h-6 text-orange-600"></i>
+                                        <svg class="w-5 h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins-icon lucide-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
                                     </div>
                                     <p class="text-3xl font-bold text-foreground mb-1">5,716</p>
                                     <p class="text-sm text-muted-foreground mb-2">INR / GRAM</p>
@@ -543,7 +544,7 @@
                                                 <p class="text-3xl font-extrabold text-green-600">₹158,947.54</p>
                                             </div>
                                             <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center" style="background-color: rgba(34, 197, 94, 0.2);">
-                                                <i data-lucide="calculator" class="w-8 h-8 text-green-600"></i>
+                                                <svg class="w-8 h-8 text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator-icon lucide-calculator"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
                                             </div>
                                         </div>
                                     </div>
