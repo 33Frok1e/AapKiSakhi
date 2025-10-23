@@ -42,143 +42,247 @@ tailwind.config = {
 };
 
 // Product data
-const productData = [
+// const productData = [
+//     {
+//         id: "1",
+//         name: "Transparent Sunglasses",
+//         category: "Accessories",
+//         addedDate: "19 July, 2025",
+//         price: "$65.29",
+//         quantity: 235,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "2",
+//         name: "Frames Still Life Glasses",
+//         category: "Bags",
+//         addedDate: "19 July, 2025",
+//         price: "$15.99",
+//         quantity: 56,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "3",
+//         name: "Slightly Rounded Frame",
+//         category: "Men's Fashion",
+//         addedDate: "19 July, 2025",
+//         price: "$12.39",
+//         quantity: 67,
+//         status: "Deactive",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "4",
+//         name: "Colored-Transparent Sunglasses",
+//         category: "Women's Fashion",
+//         addedDate: "18 July, 2025",
+//         price: "$35.99",
+//         quantity: 24,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "5",
+//         name: "Sun Glasses Table",
+//         category: "Accessories",
+//         addedDate: "17 July, 2025",
+//         price: "$65.29",
+//         quantity: 32,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "6",
+//         name: "Rounded Frames Glasses",
+//         category: "Bags",
+//         addedDate: "20 July, 2025",
+//         price: "$45.29",
+//         quantity: 45,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "7",
+//         name: "Transparent Sunglasses",
+//         category: "Accessories",
+//         addedDate: "19 July, 2025",
+//         price: "$65.29",
+//         quantity: 235,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "8",
+//         name: "Frames Still Life Glasses",
+//         category: "Bags",
+//         addedDate: "19 July, 2025",
+//         price: "$15.99",
+//         quantity: 56,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "9",
+//         name: "Slightly Rounded Frame",
+//         category: "Men's Fashion",
+//         addedDate: "19 July, 2025",
+//         price: "$12.39",
+//         quantity: 67,
+//         status: "Deactive",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "10",
+//         name: "Colored-Transparent Sunglasses",
+//         category: "Women's Fashion",
+//         addedDate: "18 July, 2025",
+//         price: "$35.99",
+//         quantity: 24,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "11",
+//         name: "Transparent Sunglasses",
+//         category: "Accessories",
+//         addedDate: "19 July, 2025",
+//         price: "$65.29",
+//         quantity: 235,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "12",
+//         name: "Frames Still Life Glasses",
+//         category: "Bags",
+//         addedDate: "19 July, 2025",
+//         price: "$15.99",
+//         quantity: 56,
+//         status: "Active",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     },
+//     {
+//         id: "13",
+//         name: "Slightly Rounded Frame",
+//         category: "Men's Fashion",
+//         addedDate: "19 July, 2025",
+//         price: "$12.39",
+//         quantity: 67,
+//         status: "Deactive",
+//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+//     }
+// ];
+
+// User Data
+const userData = [
     {
         id: "1",
-        name: "Transparent Sunglasses",
-        category: "Accessories",
-        addedDate: "19 July, 2025",
-        price: "$65.29",
-        quantity: 235,
+        name: "Rati Krishna Moharana",
+        email: "ratikrishnamoharana@gmail.com",
+        ContactNo: 8117935016,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
+        superUser: "Active",
     },
     {
         id: "2",
-        name: "Frames Still Life Glasses",
-        category: "Bags",
-        addedDate: "19 July, 2025",
-        price: "$15.99",
-        quantity: 56,
+        name: "John Doe",
+        email: "johndoe@gmail.com",
+        ContactNo: 1323456789,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        superUser: "Active",
+    },{
         id: "3",
-        name: "Slightly Rounded Frame",
-        category: "Men's Fashion",
-        addedDate: "19 July, 2025",
-        price: "$12.39",
-        quantity: 67,
-        status: "Deactive",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        name: "Jane Doe",
+        email: "janedoe@gmail.com",
+        ContactNo: 7894561237,
+        status: "Active",
+        superUser: "Active",
+    },{
         id: "4",
-        name: "Colored-Transparent Sunglasses",
-        category: "Women's Fashion",
-        addedDate: "18 July, 2025",
-        price: "$35.99",
-        quantity: 24,
-        status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        name: "Shruti Jain",
+        email: "shrutijain@gmail.com",
+        ContactNo: 4561237898,
+        status: "Deactive",
+        superUser: "Deactive",
+    },{
         id: "5",
-        name: "Sun Glasses Table",
-        category: "Accessories",
-        addedDate: "17 July, 2025",
-        price: "$65.29",
-        quantity: 32,
-        status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        name: "Kiwi Shio",
+        email: "kiwishio@gmail.com",
+        ContactNo: 1234567895,
+        status: "Deactive",
+        superUser: "Active",
+    },{
         id: "6",
-        name: "Rounded Frames Glasses",
-        category: "Bags",
-        addedDate: "20 July, 2025",
-        price: "$45.29",
-        quantity: 45,
+        name: "Jonathan Amral",
+        email: "jonathangaming@gmail.com",
+        ContactNo: 1278934560,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        superUser: "Active",
+    },{
         id: "7",
-        name: "Transparent Sunglasses",
-        category: "Accessories",
-        addedDate: "19 July, 2025",
-        price: "$65.29",
-        quantity: 235,
+        name: "Snax Gaming",
+        email: "snaxgaming@gmail.com",
+        ContactNo: 6341527891,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        superUser: "Deactive",
+    },{
         id: "8",
-        name: "Frames Still Life Glasses",
-        category: "Bags",
-        addedDate: "19 July, 2025",
-        price: "$15.99",
-        quantity: 56,
+        name: "Parv Thakur",
+        email: "parvthakur@gmail.com",
+        ContactNo: 8117935016,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        superUser: "Active",
+    },{
         id: "9",
-        name: "Slightly Rounded Frame",
-        category: "Men's Fashion",
-        addedDate: "19 July, 2025",
-        price: "$12.39",
-        quantity: 67,
-        status: "Deactive",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        name: "Elina Karimova",
+        email: "elinakarimova@gmail.com",
+        ContactNo: 8117935016,
+        status: "Active",
+        superUser: "Active",
+    },{
         id: "10",
-        name: "Colored-Transparent Sunglasses",
-        category: "Women's Fashion",
-        addedDate: "18 July, 2025",
-        price: "$35.99",
-        quantity: 24,
+        name: "Yuna Karimova",
+        email: "yunakarimova@gmail.com",
+        ContactNo: 8117935016,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        superUser: "Active",
+    },{
         id: "11",
-        name: "Transparent Sunglasses",
-        category: "Accessories",
-        addedDate: "19 July, 2025",
-        price: "$65.29",
-        quantity: 235,
+        name: "Krishna",
+        email: "krishna@gmail.com",
+        ContactNo: 8117935016,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        superUser: "Active",
+    },{
         id: "12",
-        name: "Frames Still Life Glasses",
-        category: "Bags",
-        addedDate: "19 July, 2025",
-        price: "$15.99",
-        quantity: 56,
+        name: "Rati Krishna Moharana",
+        email: "ratikrishnamoharana@gmail.com",
+        ContactNo: 8117935016,
         status: "Active",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    },
-    {
+        superUser: "Active",
+    },{
         id: "13",
-        name: "Slightly Rounded Frame",
-        category: "Men's Fashion",
-        addedDate: "19 July, 2025",
-        price: "$12.39",
-        quantity: 67,
+        name: "Rati Krishna Moharana",
+        email: "ratikrishnamoharana@gmail.com",
+        ContactNo: 8117935016,
+        status: "Active",
+        superUser: "Active",
+    },{
+        id: "14",
+        name: "Rati Krishna Moharana",
+        email: "ratikrishnamoharana@gmail.com",
+        ContactNo: 8117935016,
         status: "Deactive",
-        imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-    }
+        superUser: "Active",
+    },
 ];
 
 // Table state
 let currentPage = 0;
 let pageSize = 10;
-let filteredData = [...productData];
+let filteredData = [...userData];
 let sortColumn = null;
 let sortDirection = 'asc';
 
@@ -276,34 +380,37 @@ function renderTable() {
     const endIndex = startIndex + pageSize;
     const pageData = filteredData.slice(startIndex, endIndex);
 
-    tbody.innerHTML = pageData.map(product => `
+    tbody.innerHTML = pageData.map(user => `
         <tr class="fade-in hover:bg-gray-50">
             <td class="px-6 py-4">
                 <div class="flex items-center">
-                    <input class="row-checkbox w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500" type="checkbox" value="${product.id}">
-            </div>
+                    <input class="row-checkbox w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500" type="checkbox" value="${user.id}">
+                </div>
             </td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${user.id}</td>
             <td class="px-6 py-4">
                 <div class="flex items-center">
-                    <img src="${product.imageSrc}" alt="${product.name}" class="w-14 h-14 rounded-lg object-cover mr-3 product-image">
                     <div class="flex flex-col">
-                        <a href="#!" class="text-gray-900 font-semibold hover:text-primary-500 text-sm">${product.name}</a>
-                        </div>
-                        </div>
+                        <a href="#!" class="text-gray-900 font-semibold hover:text-primary-500 text-sm">${user.name}</a>
+                    </div>
+                </div>
             </td>
-            <td class="px-6 py-4 text-gray-900 text-sm">${product.category}</td>
-            <td class="px-6 py-4 text-gray-900 text-sm">${product.addedDate}</td>
-            <td class="px-6 py-4 text-gray-900 text-sm">${product.price}</td>
-            <td class="px-6 py-4 text-gray-900 text-sm">${product.quantity}</td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${user.email}</td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${user.ContactNo}</td>
             <td class="px-6 py-4">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${product.status === 'Active' ? 'badge-success' : 'badge-danger'}">
-                    ${product.status}
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${user.status === 'Active' ? 'badge-success' : 'badge-danger'}">
+                    ${user.status}
+                </span>
+            </td>
+            <td class="px-6 py-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${user.superUser === 'Active' ? 'badge-success' : 'badge-danger'}">
+                    ${user.superUser}
                 </span>
             </td>
             <td class="px-6 py-4">
                 <div class="flex items-center space-x-1 action-buttons">
                     <div class="tooltip">
-                        <button class="btn-ghost btn-icon rounded-full" title="View">
+                        <button class="btn-ghost btn-icon rounded-full">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -312,7 +419,7 @@ function renderTable() {
                         <div class="tooltip-text">View</div>
                     </div>
                     <div class="tooltip">
-                        <button class="btn-ghost btn-icon rounded-full" title="Edit">
+                        <button class="btn-ghost btn-icon rounded-full">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
@@ -320,7 +427,7 @@ function renderTable() {
                         <div class="tooltip-text">Edit</div>
                 </div>
                     <div class="tooltip">
-                        <button class="btn-ghost btn-icon rounded-full" title="Delete">
+                        <button class="btn-ghost btn-icon rounded-full">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                             </svg>
@@ -346,9 +453,8 @@ function initializeSearch() {
     
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
-        filteredData = productData.filter(product => 
+        filteredData = userData.filter(product => 
             product.name.toLowerCase().includes(searchTerm) ||
-            product.category.toLowerCase().includes(searchTerm) ||
             product.status.toLowerCase().includes(searchTerm)
         );
         currentPage = 0;
