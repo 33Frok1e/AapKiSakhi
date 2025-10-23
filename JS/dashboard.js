@@ -708,16 +708,21 @@ function setupSidebarDropdowns() {
 }
 
 function toggleSidebarMenu(menu, arrow) {
+    // Check if current menu is already open
+    const isCurrentlyOpen = !menu.classList.contains('hidden');
+    
     // Close all other sidebar menus first
     closeAllSidebarMenus();
     
     // Toggle current menu
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        arrow.classList.add('rotated');
-    } else {
+    if (isCurrentlyOpen) {
+        // If it was open, close it
         menu.classList.add('hidden');
         arrow.classList.remove('rotated');
+    } else {
+        // If it was closed, open it
+        menu.classList.remove('hidden');
+        arrow.classList.add('rotated');
     }
 }
 
