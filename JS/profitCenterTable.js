@@ -1,248 +1,23 @@
 // table.js - Table related functionality
 
-// Product data
-// const productData = [
-//     {
-//         id: "1",
-//         name: "Transparent Sunglasses",
-//         category: "Accessories",
-//         addedDate: "19 July, 2025",
-//         price: "$65.29",
-//         quantity: 235,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "2",
-//         name: "Frames Still Life Glasses",
-//         category: "Bags",
-//         addedDate: "19 July, 2025",
-//         price: "$15.99",
-//         quantity: 56,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "3",
-//         name: "Slightly Rounded Frame",
-//         category: "Men's Fashion",
-//         addedDate: "19 July, 2025",
-//         price: "$12.39",
-//         quantity: 67,
-//         status: "Deactive",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "4",
-//         name: "Colored-Transparent Sunglasses",
-//         category: "Women's Fashion",
-//         addedDate: "18 July, 2025",
-//         price: "$35.99",
-//         quantity: 24,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "5",
-//         name: "Sun Glasses Table",
-//         category: "Accessories",
-//         addedDate: "17 July, 2025",
-//         price: "$65.29",
-//         quantity: 32,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "6",
-//         name: "Rounded Frames Glasses",
-//         category: "Bags",
-//         addedDate: "20 July, 2025",
-//         price: "$45.29",
-//         quantity: 45,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "7",
-//         name: "Transparent Sunglasses",
-//         category: "Accessories",
-//         addedDate: "19 July, 2025",
-//         price: "$65.29",
-//         quantity: 235,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "8",
-//         name: "Frames Still Life Glasses",
-//         category: "Bags",
-//         addedDate: "19 July, 2025",
-//         price: "$15.99",
-//         quantity: 56,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "9",
-//         name: "Slightly Rounded Frame",
-//         category: "Men's Fashion",
-//         addedDate: "19 July, 2025",
-//         price: "$12.39",
-//         quantity: 67,
-//         status: "Deactive",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "10",
-//         name: "Colored-Transparent Sunglasses",
-//         category: "Women's Fashion",
-//         addedDate: "18 July, 2025",
-//         price: "$35.99",
-//         quantity: 24,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "11",
-//         name: "Transparent Sunglasses",
-//         category: "Accessories",
-//         addedDate: "19 July, 2025",
-//         price: "$65.29",
-//         quantity: 235,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "12",
-//         name: "Frames Still Life Glasses",
-//         category: "Bags",
-//         addedDate: "19 July, 2025",
-//         price: "$15.99",
-//         quantity: 56,
-//         status: "Active",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     },
-//     {
-//         id: "13",
-//         name: "Slightly Rounded Frame",
-//         category: "Men's Fashion",
-//         addedDate: "19 July, 2025",
-//         price: "$12.39",
-//         quantity: 67,
-//         status: "Deactive",
-//         imageSrc: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=56&h=56&fit=crop"
-//     }
-// ];
+// Center Data
 
-// User Data
-
-const userData = [
+const centerData = [
     {
         id: "1",
-        name: "Rati Krishna Moharana",
-        email: "ratikrishnamoharana@gmail.com",
-        ContactNo: 8117935016,
+        name: "Main Branch",
+        Address: "3RD FLOOR, SAVITRI TOWER, SAHEED NAGAR,RUPALI SQUARE",
         status: "Active",
-        superUser: "Active",
-    },
-    {
-        id: "2",
-        name: "John Doe",
-        email: "johndoe@gmail.com",
-        ContactNo: 1323456789,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "3",
-        name: "Jane Doe",
-        email: "janedoe@gmail.com",
-        ContactNo: 7894561237,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "4",
-        name: "Shruti Jain",
-        email: "shrutijain@gmail.com",
-        ContactNo: 4561237898,
-        status: "Deactive",
-        superUser: "Deactive",
-    },{
-        id: "5",
-        name: "Kiwi Shio",
-        email: "kiwishio@gmail.com",
-        ContactNo: 1234567895,
-        status: "Deactive",
-        superUser: "Active",
-    },{
-        id: "6",
-        name: "Jonathan Amral",
-        email: "jonathangaming@gmail.com",
-        ContactNo: 1278934560,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "7",
-        name: "Snax Gaming",
-        email: "snaxgaming@gmail.com",
-        ContactNo: 6341527891,
-        status: "Active",
-        superUser: "Deactive",
-    },{
-        id: "8",
-        name: "Parv Thakur",
-        email: "parvthakur@gmail.com",
-        ContactNo: 8117935016,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "9",
-        name: "Elina Karimova",
-        email: "elinakarimova@gmail.com",
-        ContactNo: 8117935016,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "10",
-        name: "Yuna Karimova",
-        email: "yunakarimova@gmail.com",
-        ContactNo: 8117935016,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "11",
-        name: "Krishna",
-        email: "krishna@gmail.com",
-        ContactNo: 8117935016,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "12",
-        name: "Rati Krishna Moharana",
-        email: "ratikrishnamoharana@gmail.com",
-        ContactNo: 8117935016,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "13",
-        name: "Rati Krishna Moharana",
-        email: "ratikrishnamoharana@gmail.com",
-        ContactNo: 8117935016,
-        status: "Active",
-        superUser: "Active",
-    },{
-        id: "14",
-        name: "Rati Krishna Moharana",
-        email: "ratikrishnamoharana@gmail.com",
-        ContactNo: 8117935016,
-        status: "Deactive",
-        superUser: "Active",
+        MakingCharges: 1800,
+        DiamondDiscount: 0,
+        GLocations: "Kolkata",
     },
 ];
 
 // Table state
 let currentPage = 0;
 let pageSize = 10;
-let filteredData = [...userData];
+let filteredData = [...centerData];
 let sortColumn = null;
 let sortDirection = 'asc';
 
@@ -261,33 +36,31 @@ function renderTable() {
     const endIndex = startIndex + pageSize;
     const pageData = filteredData.slice(startIndex, endIndex);
 
-    tbody.innerHTML = pageData.map(user => `
+    tbody.innerHTML = pageData.map(center => `
         <tr class="fade-in hover:bg-gray-50">
             <td class="px-6 py-4">
                 <div class="flex items-center">
-                    <input class="row-checkbox w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500" type="checkbox" value="${user.id}">
+                    <input class="row-checkbox w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500" type="checkbox" value="${center.id}">
                 </div>
             </td>
-            <td class="px-6 py-4 text-gray-900 text-sm">${user.id}</td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${center.id}</td>
             <td class="px-6 py-4">
                 <div class="flex items-center">
                     <div class="flex flex-col">
-                        <a href="#!" class="text-gray-900 font-semibold hover:text-primary-500 text-sm">${user.name}</a>
+                        <a href="#!" class="text-gray-900 font-semibold hover:text-primary-500 text-sm">${center.name}</a>
                     </div>
                 </div>
             </td>
-            <td class="px-6 py-4 text-gray-900 text-sm">${user.email}</td>
-            <td class="px-6 py-4 text-gray-900 text-sm">${user.ContactNo}</td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${center.Address}</td>
             <td class="px-6 py-4">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${user.status === 'Active' ? 'badge-success' : 'badge-danger'}">
-                    ${user.status}
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${center.status === 'Active' ? 'badge-success' : 'badge-danger'}">
+                    ${center.status}
                 </span>
             </td>
-            <td class="px-6 py-4">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${user.superUser === 'Active' ? 'badge-success' : 'badge-danger'}">
-                    ${user.superUser}
-                </span>
-            </td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${center.MakingCharges}</td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${center.DiamondDiscount}</td>
+            <td class="px-6 py-4 text-gray-900 text-sm">${center.GLocations}</td>
+
             <td class="px-6 py-4">
                 <div class="flex items-center space-x-1 action-buttons">
                     <div class="tooltip">
@@ -334,7 +107,7 @@ function initializeSearch() {
     
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
-        filteredData = userData.filter(product => 
+        filteredData = centerData.filter(product => 
             product.name.toLowerCase().includes(searchTerm) ||
             product.status.toLowerCase().includes(searchTerm)
         );
