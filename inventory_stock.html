@@ -77,7 +77,7 @@
                     <!-- Accounts -->
                     <li>
                         <div class="relative">
-                            <button id="accountsDropdownToggle" class="nav-link active w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                            <button id="accountsDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
                                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
                                     <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
                                 </svg>
@@ -96,7 +96,7 @@
                                 <a href="accounts_glDetails.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
                                     <span class="nav-text">GL Details</span>
                                 </a>
-                                <a href="accounts_trialBalance.html" class="nav-link active flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                <a href="accounts_trialBalance.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
                                     <span class="nav-text">Trial Balance</span>
                                 </a>
                                 <a href="accounts_partyLedger.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
@@ -129,7 +129,7 @@
                     <!-- Inventory -->
                     <li>
                         <div class="relative">
-                            <button id="inventoryDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                            <button id="inventoryDropdownToggle" class="nav-link active w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
                                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
                                     <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
                                 </svg>
@@ -151,7 +151,7 @@
                                 <a href="inventory_purchaseApproval.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
                                     <span class="nav-text">Purchase Approval</span>
                                 </a>
-                                <a href="inventory_stock.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                <a href="inventory_stock.html" class="nav-link active flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
                                     <span class="nav-text">Stock</span>
                                 </a>
                                 <a href="inventory_returnApprovalStock.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
@@ -293,28 +293,30 @@
                     <ol class="flex items-center space-x-2 text-sm">
                         <li><a href="#" class="text-primary-500 hover:text-primary-600">Home</a></li>
                         <li class="text-gray-400">/</li>
-                        <li class="text-gray-600">Accounts</li>
+                        <li class="text-gray-600">Inventory</li>
                         <li class="text-gray-400">/</li>
-                        <li class="text-gray-600">Trial Balance</li>
+                        <li class="text-gray-600">Stock</li>
                     </ol>
                 </nav>
 
                 <!-- Page Header -->
                 <div class="flex justify-between items-center mb-6">
                     <div>
-                        <h1 class="text-2xl font-bold text-gray-800 mb-2">Trial Balance</h1>
-                        <p class="text-gray-600">Welcome to your jewelry business Trial Balance</p>
+                        <h1 class="text-2xl font-bold text-gray-800 mb-2">Stock</h1>
+                        <p class="text-gray-600">Welcome to your jewelry business stockV2</p>
                     </div>
-                    <div>
-                        <!-- <button class="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-200">
+                    <!-- <div>
+                        <button class="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-200">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                             </svg>
-                                New Voucher
-                        </button> -->
-                    </div>
+                                New Stock
+                        </button>
+                    </div> -->
                 </div>
 
+                <!-- Product Table Card -->
+                
             </main>
         </div>
     </div>
