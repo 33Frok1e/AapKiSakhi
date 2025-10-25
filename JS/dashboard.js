@@ -57,13 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         initializePagination();
         initializeCheckboxes();
     }
-    
-    // Debug: Test if elements exist
-    console.log('=== DEBUGGING DROPDOWNS ===');
-    console.log('User dropdown toggle:', document.getElementById('userDropdownToggle'));
-    console.log('User dropdown menu:', document.getElementById('userDropdown'));
-    console.log('Admin dropdown toggle:', document.getElementById('adminDropdownToggle'));
-    console.log('Admin submenu:', document.getElementById('adminSubmenu'));
 });
 
 // Sidebar functionality
@@ -266,6 +259,19 @@ function setupSidebarDropdowns() {
             toggleSidebarMenu(reportsMenu, reportsArrow);
         };
     }
+
+        // POS
+        const posToggle = document.getElementById('posDropdownToggle');
+        const posMenu = document.getElementById('posSubmenu');
+        const posArrow = document.getElementById('posArrow');
+        
+        if (posToggle && posMenu && posArrow) {
+            posToggle.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSidebarMenu(posMenu, posArrow);
+            };
+        }
     
     // Export dropdown
     const exportToggle = document.getElementById('exportDropdownToggle');
