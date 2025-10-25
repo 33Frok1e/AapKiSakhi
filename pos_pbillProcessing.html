@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/tabler-sprite.svg">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/dashboard.css">
+    
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Wrapper -->
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar bg-white border-r border-gray-200 fixed top-0 left-0 h-screen z-40 overflow-y-auto shadow-lg" style="z-index: 999;">
+            <!-- Brand Logo -->
+            <div class="p-6 border-gray-200">
+                <a href="dashboard.html" class="flex items-center gap-3">
+                    <div class="flex items-center justify-center">
+                        <img src="images/MainImage100.png" alt="Logo" class="h-10 w-auto object-contain"/>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="py-4">
+                <ul class="space-y-1">
+                    <!-- Dashboard -->
+                    <li>
+                        <a href="dashboard.html" class="nav-link flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                            <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-columns-gap" viewBox="0 0 16 16">
+                                <path d="M6 1v3H1V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm14 12v3h-5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM6 8v7H1V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm14-6v7h-5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/>
+                            </svg>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- Admin -->
+                    <li>
+                        <div class="relative">
+                            <button id="adminDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                                  </svg>
+                                <span class="nav-text">Admin</span>
+                                <svg id="adminArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="adminSubmenu" class="hidden">
+                                    <a href="admin_users.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Users</span>
+                                    </a>
+                                    <a href="admin_profitCentre.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Profit Centers</span>
+                                    </a>
+                                    <a href="admin_categories.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Categories</span>
+                                    </a>
+                                    <a href="admin_variant.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Variants</span>
+                                    </a>
+                                    <a href="admin_partyMaster.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Party Master</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Accounts -->
+                    <li>
+                        <div class="relative">
+                            <button id="accountsDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-id-card-lanyard-icon lucide-id-card-lanyard"><path d="M13.5 8h-3"/><path d="m15 2-1 2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3"/><path d="M16.899 22A5 5 0 0 0 7.1 22"/><path d="m9 2 3 6"/><circle cx="12" cy="15" r="3"/></svg>
+                                <span class="nav-text">Accounts</span>
+                                <svg id="accountsArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="accountsSubmenu" class="hidden">
+                                <a href="accounts_voucher.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Journal Voucher</span>
+                                </a>
+                                <a href="accounts_glSummary.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">GL Summary</span>
+                                </a>
+                                <a href="accounts_glDetails.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">GL Details</span>
+                                </a>
+                                <a href="accounts_trialBalance.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Trial Balance</span>
+                                </a>
+                                <a href="accounts_partyLedger.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Party Ledger</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Exchange -->
+                    <li>
+                        <div class="relative">
+                            <button id="exchangeDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-left-icon lucide-arrow-right-left"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
+                                <span class="nav-text">Exchange</span>
+                                <svg id="exchangeArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="exchangeSubmenu" class="hidden">
+                                <a href="exchange_existingInvoices.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Existing Invoice</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Inventory -->
+                    <li>
+                        <div class="relative">
+                            <button id="inventoryDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package-icon lucide-package"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg>
+                                <span class="nav-text">Inventory</span>
+                                <svg id="inventoryArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="inventorySubmenu" class="hidden">
+                                <a href="inventory_stockEntry.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Virtual Stock - Entry</span>
+                                </a>
+                                <a href="inventory_purchaseEntry.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Purchase Entry</span>
+                                </a>
+                                <a href="inventory_stockApproval.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Virtual Stock - Approval</span>
+                                </a>
+                                <a href="inventory_purchaseApproval.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Purchase Approval</span>
+                                </a>
+                                <a href="inventory_stock.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Stock</span>
+                                </a>
+                                <a href="inventory_returnApprovalStock.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                    <span class="nav-text">Return Approval Stock</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Orders -->
+                    <li>
+                        <div class="relative">
+                            <button id="ordersDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                <span class="nav-text">Orders</span>                                <svg id="ordersArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="ordersSubmenu" class="hidden">
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Receive Order</span>
+                                    </a>
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Reports</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Reports -->
+                    <li>
+                        <div class="relative">
+                            <button id="reportsDropdownToggle" class="nav-link w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column-icon lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                                <span class="nav-text">Reports</span>
+                                <svg id="reportsArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="reportsSubmenu" class="hidden">
+                                    <a href="#" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Vendor Sales Book</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- POS -->
+                    <li>
+                        <div class="relative">
+                            <button id="posDropdownToggle" class="nav-link active w-full flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 relative">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card-icon lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                                <span class="nav-text">POS</span>
+                                <svg id="posArrow" class="w-4 h-4 ml-auto nav-text transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="posSubmenu" class="hidden">
+                                    <a href="pos_sales.html" class="nav-link flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">Sales</span>
+                                    </a>
+                                    <a href="pos_pbillProcessing.html" class="nav-link active flex items-center px-6 py-2 text-gray-600 hover:bg-gray-100 hover:text-primary-500 transition-all duration-200 ml-8">
+                                        <span class="nav-text">PBill Processing</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div id="mainContent" class="main-content flex-1">
+            <!-- Header -->
+            <header class="navbar-glass fixed top-0 right-0 w-full z-50" style="z-index: 1000;">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center gap-32">
+                        <!-- Logo -->
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center justify-center">
+                                <img src="images/MainImage100.png" alt="Logo" class="h-10 w-auto object-contain"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Sidebar Toggle -->
+                        <div class="hidden lg:block">
+                            <button id="sidebarToggle" class="sidebar-toggle text-gray-600 hover:text-primary-500 transition-colors duration-200" style="width: 40px; height: 40px; position: relative; z-index: 1001;">
+                                <!-- Expanded State - Left Arrow -->
+                                <span id="collapseMini" class="collapse-mini">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                </span>
+                                <!-- Collapsed State - Right Arrow -->
+                                <span id="collapseExpanded" class="collapse-expanded hidden">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <!-- Mobile Menu Toggle -->
+                        <button id="mobileMenuToggle" class="lg:hidden p-2 text-gray-600 hover:text-primary-500 transition-colors duration-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <div class="relative dropdown">
+                            <button id="userDropdownToggle" class="flex items-center gap-2 p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="User" class="w-8 h-8 rounded-full">
+                            </button>
+                            <div id="userDropdown" class="dropdown-menu w-64">
+                                <div class="p-4 border-b border-border space-y-2">
+                                    <div>
+                                        <p class="text-xs text-[#6b7280]">Welcome!</p>
+                                        <p class="font-semibold text-[#111827] capitalize" id="user-name">Rati Krishna Moharana</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-[#6b7280]">Profit Center</p>
+                                        <p class="font-semibold text-[#111827]">Main</p>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <button onclick="changePassword()" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#f0f2f4] transition-colors text-[#111827]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                                            <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5"/>
+                                            <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                          </svg>
+                                        <span>Change Password</span>
+                                    </button>
+                                    <button onclick="logout()" class="w-full text-[#ef4444] flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#822e2e]/10 transition-colors text-destructive">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-indent" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M3 8a.5.5 0 0 1 .5-.5h6.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H3.5A.5.5 0 0 1 3 8"/>
+                                            <path fill-rule="evenodd" d="M12.5 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5"/>
+                                        </svg>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="pt-20 px-6 pb-6">
+                <!-- Breadcrumb -->
+                <nav class="mb-6 mt-6">
+                    <ol class="flex items-center space-x-2 text-sm">
+                        <li><a href="#" class="text-primary-500 hover:text-primary-600">Home</a></li>
+                        <li class="text-gray-400">/</li>
+                        <li class="text-gray-600">POS</li>
+                        <li class="text-gray-400">/</li>
+                        <li class="text-gray-600">PBill Processing</li>
+                    </ol>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800 mb-2">PBill Processing</h1>
+                        <p class="text-gray-600">Welcome to your jewelry business - history of Provisional Bill Processing</p>
+                    </div>
+                    <div>
+                        <button class="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                                New PBill
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Table Card -->
+                <div class="bg-white rounded-xl shadow-xl border-0 overflow-hidden">
+                    <!-- Card Header -->
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                            <!-- Search PBill -->
+                            <div class="lg:w-1/3">
+                                <input 
+                                    type="search" 
+                                    id="searchUserInput" 
+                                    placeholder="Search PBill"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500 transition-all duration-200"
+                                >
+                            </div>
+                            <!-- Export User -->
+                            <div class="flex items-center gap-2">
+                                <div class="relative dropdown">
+                                    <button id="exportDropdownToggle" class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 flex items-center gap-2">
+                                        Export
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div id="exportDropdown" class="dropdown-menu">
+                                        <a href="#" class="dropdown-item">Download as CSV</a>
+                                        <a href="#" class="dropdown-item">Print</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="overflow-x-auto table-responsive">
+                        <table class="w-full table">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="select">
+                                        <!-- Selector All Users -->
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="selectAll" class="w-5 h-5 text-primary-500 border-gray-300 rounded focus:ring-primary-500">
+                                        </div>
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="name">Provisional Bill</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="name">Date</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="category">Created By</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="addedDate">IsProcessed</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="status">Invoice Number</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="quantity">Invoice Date</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 sorting" data-sort="quantity">Conversion By</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody" class="divide-y divide-gray-200">
+                                <!-- Product rows will be populated by JavaScript -->
+                                 
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="px-6 py-4 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div id="paginationInfo" class="text-sm text-gray-600">
+                            Showing 1 to 10 of 13 entries
+                        </div>
+                        <nav id="pagination" class="flex items-center space-x-1">
+                            <!-- Pagination will be populated by JavaScript -->
+                        </nav>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="JS/dashboard.js"></script>
+    <script src="JS/pbill.js"></script>
+</body>
+</html>
